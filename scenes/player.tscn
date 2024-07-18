@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://drt1incjfm4cv"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_3ncmx"]
+[ext_resource type="Texture2D" uid="uid://dw34syw01iyj1" path="res://assets/sabina.png" id="2_gjuc3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv2so"]
+atlas = ExtResource("2_gjuc3")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1byn6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv2so")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_38ya4"]
+radius = 51.1566
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_3ncmx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -109)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_1byn6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -59)
+shape = SubResource("CircleShape2D_38ya4")
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
