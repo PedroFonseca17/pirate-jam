@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="pirate game jam"
-run/main_scene="res://scenes/level_1.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scripts/sceneManager.gd"
 SceneTransition="*res://scenes/scene_transition.tscn"
+Utilities="*res://scripts/Utilities.gd"
 
 [display]
 

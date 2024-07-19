@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-func change_scene(target: String) -> void:
+func change_scene(target: StringName, cur_scene: Node) -> void:
 	$AnimationPlayer.play("dissolve")
 	await $AnimationPlayer.animation_finished
-	get_tree().change_scene_to_file(target)
+	Utilities.switch_scene(target,cur_scene)
 	$AnimationPlayer.play_backwards("dissolve")
