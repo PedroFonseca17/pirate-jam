@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbbifcc62u1bw"]
+[gd_scene load_steps=3 format=3 uid="uid://bbbifcc62u1bw"]
 
 [ext_resource type="Script" path="res://scripts/Main_Menu.gd" id="1_ma3ub"]
+[ext_resource type="PackedScene" uid="uid://wx63s0ujafpd" path="res://scenes/settings.tscn" id="2_jnl31"]
 
 [node name="Main_Menu" type="Node2D"]
 
@@ -75,5 +76,9 @@ focus_neighbor_bottom = NodePath("../Start")
 theme_override_font_sizes/font_size = 24
 text = "Exit Game"
 
+[node name="Settings" parent="UI_layer" node_paths=PackedStringArray("pre_scene") instance=ExtResource("2_jnl31")]
+pre_scene = NodePath("../Main_Menu")
+
 [connection signal="pressed" from="UI_layer/Main_Menu/VBoxContainer/Start" to="UI_layer/Main_Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="UI_layer/Main_Menu/VBoxContainer/Option" to="UI_layer/Main_Menu" method="_on_option_pressed"]
 [connection signal="pressed" from="UI_layer/Main_Menu/VBoxContainer/Exit" to="UI_layer/Main_Menu" method="_on_exit_pressed"]
