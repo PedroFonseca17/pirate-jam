@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbbifcc62u1bw"]
+
+[ext_resource type="Script" path="res://scripts/Main_Menu.gd" id="1_ma3ub"]
+[ext_resource type="PackedScene" uid="uid://wx63s0ujafpd" path="res://scenes/settings.tscn" id="2_jnl31"]
+
+[node name="Main_Menu" type="Node2D"]
+
+[node name="UI_layer" type="CanvasLayer" parent="."]
+
+[node name="Main_Menu" type="Control" parent="UI_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ma3ub")
+
+[node name="ColorRect" type="ColorRect" parent="UI_layer/Main_Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI_layer/Main_Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.5
+offset_top = -144.0
+offset_right = 288.5
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI_layer/Main_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "A game that is very cool"
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="UI_layer/Main_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Option")
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="Option" type="Button" parent="UI_layer/Main_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Start")
+focus_neighbor_bottom = NodePath("../Exit")
+theme_override_font_sizes/font_size = 24
+text = "Settings"
+
+[node name="Exit" type="Button" parent="UI_layer/Main_Menu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../Option")
+focus_neighbor_bottom = NodePath("../Start")
+theme_override_font_sizes/font_size = 24
+text = "Exit Game"
+
+[node name="Settings" parent="UI_layer" node_paths=PackedStringArray("pre_scene") instance=ExtResource("2_jnl31")]
+pre_scene = NodePath("../Main_Menu")
+
+[connection signal="pressed" from="UI_layer/Main_Menu/VBoxContainer/Start" to="UI_layer/Main_Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="UI_layer/Main_Menu/VBoxContainer/Option" to="UI_layer/Main_Menu" method="_on_option_pressed"]
+[connection signal="pressed" from="UI_layer/Main_Menu/VBoxContainer/Exit" to="UI_layer/Main_Menu" method="_on_exit_pressed"]

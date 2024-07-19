@@ -471,7 +471,7 @@ sources/1 = SubResource("TileSetAtlasSource_0f3sn")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sflup"]
 size = Vector2(254.319, 10.9021)
 
-[node name="Level 1" type="Node2D"]
+[node name="Level_1" type="Node2D"]
 script = ExtResource("1_3lfx3")
 
 [node name="TileMap" type="TileMap" parent="."]
