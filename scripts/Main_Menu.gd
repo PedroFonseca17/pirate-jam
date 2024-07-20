@@ -9,7 +9,7 @@ func reset_focus():
 	$VBoxContainer/Start.grab_focus()
 
 func _on_start_pressed():
-	Utilities.switch_scene("Level_1", self)
+	Utilities.switch_scene_with_clean_up("Level_1", self)
 
 func _on_option_pressed():
 	option_menu.show()

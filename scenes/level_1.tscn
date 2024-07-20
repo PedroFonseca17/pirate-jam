@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://vw88ijwah1lo"]
+[gd_scene load_steps=9 format=3 uid="uid://vw88ijwah1lo"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_3lfx3"]
 [ext_resource type="Texture2D" uid="uid://cwu2hdyprj8eh" path="res://assets/TilesetFloor.png" id="2_5cn5u"]
 [ext_resource type="PackedScene" uid="uid://drt1incjfm4cv" path="res://scenes/player.tscn" id="3_jfbpp"]
 [ext_resource type="PackedScene" uid="uid://bxqmlcmxf5p5k" path="res://scenes/enemy.tscn" id="4_ot6tv"]
+[ext_resource type="PackedScene" uid="uid://dm4brpia2ep42" path="res://scenes/pause_menu.tscn" id="4_vmgev"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f3sn"]
 texture = ExtResource("2_5cn5u")
@@ -483,6 +484,11 @@ layer_0/tile_data = PackedInt32Array(-2949180, 1, 12, -2883644, 1, 5, -2818108, 
 [node name="player" parent="." groups=["player"] instance=ExtResource("3_jfbpp")]
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(5, -197)
+scale = Vector2(1.8, 1)
+
+[node name="PauseMenu" parent="player" instance=ExtResource("4_vmgev")]
+visible = false
 position = Vector2(5, -197)
 scale = Vector2(1.8, 1)
 
