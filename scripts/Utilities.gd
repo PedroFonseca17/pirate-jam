@@ -29,7 +29,6 @@ func initialize_scenes():
 
 
 # Scene manager
-func switch_scene(scene_name: StringName, cur_scene: Node):
-	var scene = scenes[scene_map[scene_name]].instantiate()
-	get_tree().root.add_child(scene)
-	cur_scene.queue_free()
+func switch_scene_with_clean_up(scene_name: StringName, cur_scene: Node):
+	var scene = scenes[scene_map[scene_name]]
+	get_tree().change_scene_to_packed(scene)

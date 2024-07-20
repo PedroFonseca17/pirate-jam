@@ -37,5 +37,5 @@ func _on_option_pressed():
 
 func _on_main_menu_pressed():
 	Engine.time_scale = 1
-	get_tree().reload_current_scene()
-	Utilities.switch_scene("MainMenu", self)
+	ui_layer.hide()
+	Utilities.switch_scene_with_clean_up("MainMenu", self)
