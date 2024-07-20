@@ -3,6 +3,17 @@ extends Node
 @export var scenes: Array[PackedScene] = []
 @export var scene_map: Dictionary = {}
 
+var config: ConfigFile
+
+func _ready():
+	config = ConfigFile.new()
+
+	for i in range(3):
+		config.set_value("Audio", str(i), 0.5)
+	
+	initialize_scenes()
+
+
 # Scene manager
 func initialize_scenes():
 	# Example of loading scenes (replace with actual scene paths)
@@ -15,8 +26,7 @@ func initialize_scenes():
 	scene_map["Level_1"] = 1
 	scene_map["Level_2"] = 2
 
-func _ready():
-	initialize_scenes()
+
 
 # Scene manager
 func switch_scene(scene_name: StringName, cur_scene: Node):

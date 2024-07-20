@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm4brpia2ep42"]
+
+[ext_resource type="Script" path="res://scripts/PauseMenu.gd" id="1_0bge4"]
+[ext_resource type="PackedScene" uid="uid://wx63s0ujafpd" path="res://scenes/settings.tscn" id="2_57r48"]
+
+[node name="PauseMenu" type="Node2D"]
+script = ExtResource("1_0bge4")
+
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="MenuLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="VBoxContainer" parent="MenuLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="MenuLayer/Panel/PauseMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenu")
+focus_neighbor_bottom = NodePath("../Option")
+text = "Resume"
+
+[node name="Option" type="Button" parent="MenuLayer/Panel/PauseMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../MainMenu")
+text = "Options
+"
+
+[node name="MainMenu" type="Button" parent="MenuLayer/Panel/PauseMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Option")
+focus_neighbor_bottom = NodePath("../Resume")
+text = "Main Menu"
+
+[node name="Settings" parent="MenuLayer/Panel" node_paths=PackedStringArray("pre_scene") instance=ExtResource("2_57r48")]
+visible = false
+layout_mode = 1
+pre_scene = NodePath("../../..")
+
+[connection signal="pressed" from="MenuLayer/Panel/PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MenuLayer/Panel/PauseMenu/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="MenuLayer/Panel/PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
