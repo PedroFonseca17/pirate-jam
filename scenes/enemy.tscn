@@ -1,9 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxqmlcmxf5p5k"]
+[gd_scene load_steps=17 format=3 uid="uid://bxqmlcmxf5p5k"]
 
 [ext_resource type="Texture2D" uid="uid://0twtw8gmwa57" path="res://assets/Idle.png" id="1_73lbg"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_f0xuw"]
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="3_f1iw1"]
 [ext_resource type="PackedScene" uid="uid://c8nuyfj6l50ju" path="res://scenes/hitbox_component.tscn" id="4_lpcpn"]
+[ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="5_yb75h"]
+[ext_resource type="Script" path="res://scripts/States/EnemyIdle.gd" id="6_2mqua"]
+[ext_resource type="Script" path="res://scripts/States/EnemyFollow.gd" id="7_6bvxx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y6sfc"]
 atlas = ExtResource("1_73lbg")
@@ -98,6 +101,18 @@ shape = SubResource("CircleShape2D_17wcc")
 
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_yb75h")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_2mqua")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_6bvxx")
+enemy = NodePath("../..")
 
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
 [connection signal="body_exited" from="HitboxComponent" to="." method="_on_hitbox_component_body_exited"]

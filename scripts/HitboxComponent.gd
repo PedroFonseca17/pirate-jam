@@ -9,6 +9,7 @@ signal player_entered(player)
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 @export var knockback_friction: float = 50.0 # Adjust this value as needed
+signal Hitbox_hit
 
 func damage(attack: Attack):
 	print("attack", attack)
@@ -16,6 +17,7 @@ func damage(attack: Attack):
 		health_component.damage(attack)
 		print(attack.attack_position)
 		apply_knockback(attack)
+		Hitbox_hit.emit()
 
 func apply_knockback(attack: Attack):
 	print("body", body)

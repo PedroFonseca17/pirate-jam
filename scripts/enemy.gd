@@ -1,9 +1,16 @@
 # Enemy.gd
 extends CharacterBody2D
+class_name Enemy
+
+@onready var hitbox_component = $HitboxComponent
 
 var attack_damage := 10.0
 var knockback_force = 0
 var player_inside := false
+signal Enemy_hit
+
+func _ready():
+	hitbox_component.Hitbox_hit.connect(on_hit)
 
 func _physics_process(delta):
 	# Apply movement logic here
@@ -52,3 +59,5 @@ func attack(player: Player):
 		print("Player does not have a HealthComponent")
 	
 
+func on_hit():
+	Enemy_hit.emit()
