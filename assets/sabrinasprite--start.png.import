@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hksents20f8i"
-path="res://.godot/imported/sabrina_walk_sprite.png-b25b21f265fea9aae25e4d65c3b97fdc.ctex"
+uid="uid://b0uavbohwisrj"
+path="res://.godot/imported/sabrinasprite--start.png-9750f297d40ac49a86847691a799c775.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sabrina_walk_sprite.png"
-dest_files=["res://.godot/imported/sabrina_walk_sprite.png-b25b21f265fea9aae25e4d65c3b97fdc.ctex"]
+source_file="res://assets/sabrinasprite--start.png"
+dest_files=["res://.godot/imported/sabrinasprite--start.png-9750f297d40ac49a86847691a799c775.ctex"]
 
 [params]
 

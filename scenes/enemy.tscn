@@ -81,12 +81,13 @@ shape = SubResource("RectangleShape2D_6xl8i")
 [node name="HealthComponent" parent="." instance=ExtResource("3_f1iw1")]
 MAX_HEALTH = 30.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_lpcpn")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "body") instance=ExtResource("4_lpcpn")]
 position = Vector2(1, 2)
 scale = Vector2(1.78202, 2.29863)
 collision_layer = 2
 collision_mask = 5
 health_component = NodePath("../HealthComponent")
+body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 light_mask = 3

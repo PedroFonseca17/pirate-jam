@@ -2,11 +2,16 @@
 extends CharacterBody2D
 
 var attack_damage := 10.0
-var knockback_force := 100.0
+var knockback_force = 0
 var player_inside := false
 
+func _physics_process(delta):
+	# Apply movement logic here
+	move_and_slide()
+	
+	velocity = velocity.move_toward(Vector2.ZERO, 100 * delta) # Adjust the drag as needed
+
 func _on_hitbox_component_body_entered(body):
-	print('he inside')
 	if body.is_in_group("Player"):
 		print("Player entered the hitbox")
 		player_inside = true
@@ -19,13 +24,11 @@ func _on_hitbox_component_body_entered(body):
 
 func _on_hitbox_component_body_exited(body):
 	if body.is_in_group("Player"):
-		print("Player exited the hitbox")
 		player_inside = false
 		$AttackTimer.stop()  # Stop the timer to stop attacking
 
 func _on_attack_timer_timeout():
 	if player_inside:
-		print("Timer triggered, attacking player")
 		var overlapping_bodies = $HitboxComponent.get_overlapping_bodies()
 		for body in overlapping_bodies:
 			if body.is_in_group("Player"):
@@ -38,12 +41,14 @@ func attack(player: Player):
 	var attack = Attack.new()
 	attack.attack_damage = attack_damage
 	attack.knockback_force = knockback_force
+	attack.attack_position = self.global_position
 	print("Attacked with damage:", attack.attack_damage, "and knockback force:", attack.knockback_force)
 
-	var health_component: HealthComponent = player.get_node("HealthComponent")
-	if health_component:
-		health_component.damage(attack)
+	var hitboxComponent: HitboxComponent = player.get_node("HitboxComponent")
+	if hitboxComponent:
+		hitboxComponent.damage(attack)
 		print("Player took damage:", attack.attack_damage)
 	else:
 		print("Player does not have a HealthComponent")
 	
+

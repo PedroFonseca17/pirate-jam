@@ -8,6 +8,7 @@ var spawnPos : Vector2
 var spawnRot : float
 var zdex : int
 var attack_damage : int
+var knockback_force : int
 
 func _ready():
 	global_position = spawnPos
@@ -22,12 +23,13 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(area):
 	print("area", area)
 	if area.is_in_group("Enemies"):
-		var enemyHealthComponent: HealthComponent = area.get_node("HealthComponent")
+		var enemyHitboxComponent: HitboxComponent = area.get_node("HitboxComponent")
 		var attack = Attack.new()
 		attack.attack_damage = attack_damage
-		attack.knockback_force = 1
+		attack.knockback_force = knockback_force
+		attack.attack_position = self.global_position
 		print("HIIIIIT")
-		enemyHealthComponent.damage(attack)
+		enemyHitboxComponent.damage(attack)
 		queue_free()
 
 func _on_life_timeout():
@@ -35,13 +37,11 @@ func _on_life_timeout():
 
 
 func _on_area_2d_area_entered(area: Area2D):
-	print("area_entered", area)
 	var enemy = area.get_parent()
 	if enemy and enemy.is_in_group("Enemies"):
-		var enemyHealthComponent: HealthComponent = enemy.get_node("HealthComponent")
 		var attack = Attack.new()
 		attack.attack_damage = attack_damage
-		attack.knockback_force = 1
-		print("HIIIIIT")
-		enemyHealthComponent.damage(attack)
+		attack.knockback_force = knockback_force
+		attack.attack_position = self.global_position
+		area.damage(attack)
 		queue_free()
