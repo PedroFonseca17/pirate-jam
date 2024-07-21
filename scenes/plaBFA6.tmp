@@ -347,7 +347,7 @@ script = ExtResource("1_3ncmx")
 position = Vector2(-1, -22)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1byn6")
-animation = &"idle_side"
+animation = &"idle_down"
 autoplay = "idle_down"
 
 [node name="DashCooldownTimer" type="Timer" parent="."]

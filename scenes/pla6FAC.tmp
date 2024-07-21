@@ -342,12 +342,13 @@ radius = 51.1566
 z_index = 5
 collision_mask = 3
 script = ExtResource("1_3ncmx")
+speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -22)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1byn6")
-animation = &"idle_side"
+animation = &"idle_down"
 autoplay = "idle_down"
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
