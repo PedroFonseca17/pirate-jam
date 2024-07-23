@@ -1,0 +1,160 @@
+[gd_scene load_steps=2 format=3 uid="uid://bueyi37se02e7"]
+
+[ext_resource type="Texture2D" uid="uid://dw34syw01iyj1" path="res://assets/sabina.png" id="1_gt7wv"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Shop Layer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Shop Layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Shop Layer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Shop Layer/Control/ColorRect"]
+position = Vector2(519, 540)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_gt7wv")
+
+[node name="ColorRect" type="ColorRect" parent="Shop Layer/Control/ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.8
+offset_top = -0.320038
+offset_bottom = 0.319946
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.6, 0.3129, 0.00599999, 1)
+
+[node name="ShopTittle" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.03
+anchor_right = 0.5
+anchor_bottom = 0.03
+offset_left = -42.0
+offset_right = 42.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Shop"
+
+[node name="ShopList" type="VBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -68.0
+offset_right = 289.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dash" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="Dash" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Dash"
+
+[node name="Dash Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Ability to dash in the facing direction"
+
+[node name="Buy dash" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Buy
+"
+
+[node name="Shield" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Shield" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Shield"
+
+[node name="Shield Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Blocks 1 instance of damage per room
+"
+
+[node name="Buy Shield" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Buy"
+
+[node name="Revive" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Revive" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Revive"
+
+[node name="Revive Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Revives players with 50% of health"
+
+[node name="Buy Revive" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Buy
+"
+
+[node name="Double Shot" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="DoubleShot" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Double Shot"
+
+[node name="Double Shot Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "By pressing E fires 2 shots"
+
+[node name="Buy Double Shot" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Buy
+"
