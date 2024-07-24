@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bueyi37se02e7"]
 
 [ext_resource type="Texture2D" uid="uid://dw34syw01iyj1" path="res://assets/sabina.png" id="1_gt7wv"]
-[ext_resource type="Script" path="res://scenes/Shop_UI.gd" id="1_sv7mp"]
+[ext_resource type="Script" path="res://scripts/Shop_UI.gd" id="1_sv7mp"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -86,6 +86,28 @@ offset_right = 289.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="more_currency" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="more_currency" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Potion"
+
+[node name="more_currency Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Doubles currency gain but half health"
+
+[node name="Buy more_currency" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "
+"
 
 [node name="Dash" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
 custom_minimum_size = Vector2(100, 50)
@@ -174,6 +196,7 @@ layout_mode = 2
 text = "
 "
 
+[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency/Buy more_currency" to="Shop Layer/Control" method="_on_buy_more_currency_pressed"]
 [connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash/Buy dash" to="Shop Layer/Control" method="_on_buy_dash_pressed"]
 [connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="Shop Layer/Control" method="_on_buy_shield_pressed"]
 [connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive/Buy Revive" to="Shop Layer/Control" method="_on_buy_revive_pressed"]

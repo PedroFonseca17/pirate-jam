@@ -5,19 +5,13 @@ var dash: bool = false
 var shield: bool = false
 var revive: bool = false
 var double_shot: bool = false
+var more_currency: bool = false
 
 var currency: int = 2000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-func _process(delta):
-	print(dash)
-	print(shield)
-	print(revive)
-	print(double_shot)
-	print(currency)
 
 func add_currency(amount):
 	currency += amount
@@ -48,6 +42,11 @@ func switch_double_shot():
 		double_shot = false
 	else:
 		double_shot = true
-		
+
+func switch_more_currency():
+	if more_currency:
+		more_currency = false
+	else:
+		more_currency = true
 
 	
