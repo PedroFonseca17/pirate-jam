@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://scenes/scene_transition.tscn"
 Utilities="*res://scripts/Utilities.gd"
+GlobalPlayerInfo="*res://scenes/Global_player_info.tscn"
 
 [display]
 

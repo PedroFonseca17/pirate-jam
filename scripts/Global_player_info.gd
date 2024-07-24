@@ -1,0 +1,53 @@
+extends Node
+
+#Switches that conbtrol powerups
+var dash: bool = false
+var shield: bool = false
+var revive: bool = false
+var double_shot: bool = false
+
+var currency: int = 2000
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func _process(delta):
+	print(dash)
+	print(shield)
+	print(revive)
+	print(double_shot)
+	print(currency)
+
+func add_currency(amount):
+	currency += amount
+
+func remove_currency(amount):
+	currency -= amount
+
+func switch_dash():
+	if dash:
+		dash = false
+	else:
+		dash = true
+
+func switch_shield():
+	if shield:
+		shield = false
+	else:
+		shield = true
+
+func switch_revive():
+	if revive:
+		revive = false
+	else:
+		revive = true
+
+func switch_double_shot():
+	if double_shot:
+		double_shot = false
+	else:
+		double_shot = true
+		
+
+	

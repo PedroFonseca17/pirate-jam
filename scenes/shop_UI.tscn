@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bueyi37se02e7"]
+[gd_scene load_steps=3 format=3 uid="uid://bueyi37se02e7"]
 
 [ext_resource type="Texture2D" uid="uid://dw34syw01iyj1" path="res://assets/sabina.png" id="1_gt7wv"]
+[ext_resource type="Script" path="res://scenes/Shop_UI.gd" id="1_sv7mp"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sv7mp")
 
 [node name="ColorRect" type="ColorRect" parent="Shop Layer/Control"]
 layout_mode = 1
@@ -41,6 +43,20 @@ offset_bottom = 0.319946
 grow_horizontal = 0
 grow_vertical = 2
 color = Color(0.6, 0.3129, 0.00599999, 1)
+
+[node name="Currency" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.05
+offset_left = -50.0
+offset_bottom = 30.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 2
 
 [node name="ShopTittle" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect"]
 layout_mode = 1
@@ -90,7 +106,7 @@ text = "Ability to dash in the facing direction"
 [node name="Buy dash" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Buy
+text = "
 "
 
 [node name="Shield" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
@@ -113,7 +129,6 @@ text = "Blocks 1 instance of damage per room
 [node name="Buy Shield" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Buy"
 
 [node name="Revive" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
 custom_minimum_size = Vector2(0, 50)
@@ -134,7 +149,7 @@ text = "Revives players with 50% of health"
 [node name="Buy Revive" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Buy
+text = "
 "
 
 [node name="Double Shot" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
@@ -156,5 +171,10 @@ text = "By pressing E fires 2 shots"
 [node name="Buy Double Shot" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
-text = "Buy
+text = "
 "
+
+[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash/Buy dash" to="Shop Layer/Control" method="_on_buy_dash_pressed"]
+[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="Shop Layer/Control" method="_on_buy_shield_pressed"]
+[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive/Buy Revive" to="Shop Layer/Control" method="_on_buy_revive_pressed"]
+[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot/Buy Double Shot" to="Shop Layer/Control" method="_on_buy_double_shot_pressed"]
