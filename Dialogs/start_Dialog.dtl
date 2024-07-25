@@ -13,7 +13,6 @@ misterious_persone: You have to. I cannot afford to lose you, my sweet dear Sabi
 [style name="Info style"]
 Sabina Spielrein. This is now your name.
 [style name="dialog_style"]
-[wait time="1.0"]
 [music path="res://assets/audio/whisper-evil-little-nothings-to-me-voices-in-your-head-196185.mp3" fade="2.0" volume="0.0"]
 [wait time="1.0"]
 [inaudible]
@@ -22,6 +21,7 @@ Psiquiatris (Happy): Sa... na...
 Psiquiatris (Happy): Sa... bi... na...
 Psiquiatris (Happy): Sabina?
 Psiquiatris (Happy): Sabina, can you hear me?
+[signal arg="open_eyes"]
 [clear time="3.0" step="false" text="false" portraits="false" background="false" positions="false" style="false"]
 [wait time="2.0" hide_text="false"]
 Sabina (default): What...?

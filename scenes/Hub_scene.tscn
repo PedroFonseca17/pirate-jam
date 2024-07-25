@@ -1,34 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdsu0qqu6kotf"]
+[gd_scene load_steps=5 format=3 uid="uid://cdsu0qqu6kotf"]
 
-[sub_resource type="GDScript" id="GDScript_lsfr1"]
-script/source = "extends Node2D
+[ext_resource type="Script" path="res://scripts/Hub_scene.gd" id="1_k0tda"]
 
-var boolean : bool = true
+[sub_resource type="Animation" id="Animation_d1b8w"]
+resource_name = "open_eyes"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0.239216)]
+}
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Dialogic.signal_event.connect(_on_dialogic_signal)
-	if (boolean):
-		Dialogic.start(\"start_Dialog\")
-	else:
-		Dialogic.start(\"back_to_the_beginning\")
+[sub_resource type="Animation" id="Animation_d0o6r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _on_dialogic_signal(argument: String):
-	if (argument == \"Go to the run\"):
-		print(\"hello\")
-	if (argument == \"shop\"):
-		print(\"to the shop\")
-	if (argument == \"begin run\"):
-		print(\"lets go\")
-"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agj16"]
+_data = {
+"RESET": SubResource("Animation_d0o6r"),
+"open_eyes": SubResource("Animation_d1b8w")
+}
 
 [node name="Node2D" type="Node2D"]
-script = SubResource("GDScript_lsfr1")
+script = ExtResource("1_k0tda")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -40,6 +51,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.634737, 0.412034, 0.0773892, 1)
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -48,3 +68,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CanvasLayer/Control/ColorRect")
+libraries = {
+"": SubResource("AnimationLibrary_agj16")
+}
