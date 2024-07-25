@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdsu0qqu6kotf"]
+
+[sub_resource type="GDScript" id="GDScript_lsfr1"]
+script/source = "extends Node2D
+
+var boolean : bool = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Dialogic.signal_event.connect(_on_dialogic_signal)
+	if (boolean):
+		Dialogic.start(\"start_Dialog\")
+	else:
+		Dialogic.start(\"back_to_the_beginning\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _on_dialogic_signal(argument: String):
+	if (argument == \"Go to the run\"):
+		print(\"hello\")
+	if (argument == \"shop\"):
+		print(\"to the shop\")
+	if (argument == \"begin run\"):
+		print(\"lets go\")
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_lsfr1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

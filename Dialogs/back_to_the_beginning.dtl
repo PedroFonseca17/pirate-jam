@@ -1,0 +1,10 @@
+Psiquiatris (Happy): Needing help is not a sign of weakness.\
+How can I assist you?
+label back
+- Access upgrade shop
+	[signal arg="shop"]
+	[wait_input]
+	jump back
+- Return to the Nigredo
+	Psiquiatris (Happy): Be brave, you can do this.
+	[signal arg="begin run"]
