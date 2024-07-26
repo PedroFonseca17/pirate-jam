@@ -196,6 +196,21 @@ layout_mode = 2
 text = "
 "
 
+[node name="Button" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97
+anchor_top = 0.97
+anchor_right = 0.97
+anchor_bottom = 0.97
+offset_left = -80.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
 [connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency/Buy more_currency" to="Shop Layer/Control" method="_on_buy_more_currency_pressed"]
 [connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash/Buy dash" to="Shop Layer/Control" method="_on_buy_dash_pressed"]
 [connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="Shop Layer/Control" method="_on_buy_shield_pressed"]
