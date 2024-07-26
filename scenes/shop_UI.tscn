@@ -1,22 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bueyi37se02e7"]
 
+[ext_resource type="Script" path="res://scripts/shop_UI.gd" id="1_a0u0i"]
 [ext_resource type="Texture2D" uid="uid://dw34syw01iyj1" path="res://assets/sabina.png" id="1_gt7wv"]
-[ext_resource type="Script" path="res://scripts/Shop_UI.gd" id="1_sv7mp"]
 
-[node name="Node2D" type="Node2D"]
-
-[node name="Shop Layer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="Shop Layer"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_sv7mp")
+script = ExtResource("1_a0u0i")
 
-[node name="ColorRect" type="ColorRect" parent="Shop Layer/Control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,12 +21,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Shop Layer/Control/ColorRect"]
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
 position = Vector2(519, 540)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_gt7wv")
 
-[node name="ColorRect" type="ColorRect" parent="Shop Layer/Control/ColorRect"]
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = -1
@@ -44,7 +40,7 @@ grow_horizontal = 0
 grow_vertical = 2
 color = Color(0.6, 0.3129, 0.00599999, 1)
 
-[node name="Currency" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect"]
+[node name="Currency" type="Label" parent="ColorRect/ColorRect"]
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 1
 anchors_preset = -1
@@ -58,7 +54,7 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 2
 
-[node name="ShopTittle" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect"]
+[node name="ShopTittle" type="Label" parent="ColorRect/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -72,7 +68,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 35
 text = "Shop"
 
-[node name="ShopList" type="VBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect"]
+[node name="ShopList" type="VBoxContainer" parent="ColorRect/ColorRect"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -87,116 +83,116 @@ offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="more_currency" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+[node name="more_currency" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="more_currency" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency"]
+[node name="more_currency" type="Label" parent="ColorRect/ColorRect/ShopList/more_currency"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Potion"
 
-[node name="more_currency Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency"]
+[node name="more_currency Description" type="Label" parent="ColorRect/ColorRect/ShopList/more_currency"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Doubles currency gain but half health"
 
-[node name="Buy more_currency" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency"]
+[node name="Buy more_currency" type="Button" parent="ColorRect/ColorRect/ShopList/more_currency"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "
 "
 
-[node name="Dash" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+[node name="Dash" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 
-[node name="Dash" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash"]
+[node name="Dash" type="Label" parent="ColorRect/ColorRect/ShopList/Dash"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Dash"
 
-[node name="Dash Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash"]
+[node name="Dash Description" type="Label" parent="ColorRect/ColorRect/ShopList/Dash"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Ability to dash in the facing direction"
 
-[node name="Buy dash" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash"]
+[node name="Buy dash" type="Button" parent="ColorRect/ColorRect/ShopList/Dash"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "
 "
 
-[node name="Shield" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+[node name="Shield" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Shield" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield"]
+[node name="Shield" type="Label" parent="ColorRect/ColorRect/ShopList/Shield"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Shield"
 
-[node name="Shield Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield"]
+[node name="Shield Description" type="Label" parent="ColorRect/ColorRect/ShopList/Shield"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Blocks 1 instance of damage per room
 "
 
-[node name="Buy Shield" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield"]
+[node name="Buy Shield" type="Button" parent="ColorRect/ColorRect/ShopList/Shield"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 
-[node name="Revive" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+[node name="Revive" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="Revive" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive"]
+[node name="Revive" type="Label" parent="ColorRect/ColorRect/ShopList/Revive"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Revive"
 
-[node name="Revive Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive"]
+[node name="Revive Description" type="Label" parent="ColorRect/ColorRect/ShopList/Revive"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Revives players with 50% of health"
 
-[node name="Buy Revive" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive"]
+[node name="Buy Revive" type="Button" parent="ColorRect/ColorRect/ShopList/Revive"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "
 "
 
-[node name="Double Shot" type="HBoxContainer" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList"]
+[node name="Double Shot" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="DoubleShot" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot"]
+[node name="DoubleShot" type="Label" parent="ColorRect/ColorRect/ShopList/Double Shot"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Double Shot"
 
-[node name="Double Shot Description" type="Label" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot"]
+[node name="Double Shot Description" type="Label" parent="ColorRect/ColorRect/ShopList/Double Shot"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "By pressing E fires 2 shots"
 
-[node name="Buy Double Shot" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot"]
+[node name="Buy Double Shot" type="Button" parent="ColorRect/ColorRect/ShopList/Double Shot"]
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 text = "
 "
 
-[node name="Button" type="Button" parent="Shop Layer/Control/ColorRect/ColorRect"]
+[node name="Back" type="Button" parent="ColorRect/ColorRect"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 1
 anchors_preset = -1
@@ -211,8 +207,9 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
-[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/more_currency/Buy more_currency" to="Shop Layer/Control" method="_on_buy_more_currency_pressed"]
-[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Dash/Buy dash" to="Shop Layer/Control" method="_on_buy_dash_pressed"]
-[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="Shop Layer/Control" method="_on_buy_shield_pressed"]
-[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Revive/Buy Revive" to="Shop Layer/Control" method="_on_buy_revive_pressed"]
-[connection signal="pressed" from="Shop Layer/Control/ColorRect/ColorRect/ShopList/Double Shot/Buy Double Shot" to="Shop Layer/Control" method="_on_buy_double_shot_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/more_currency/Buy more_currency" to="." method="_on_buy_more_currency_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Dash/Buy dash" to="." method="_on_buy_dash_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="." method="_on_buy_shield_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Revive/Buy Revive" to="." method="_on_buy_revive_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Double Shot/Buy Double Shot" to="." method="_on_buy_double_shot_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/Back" to="." method="_on_back_pressed"]

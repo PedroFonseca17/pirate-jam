@@ -1,5 +1,7 @@
 extends Control
 
+@export var pre_scene: Node
+
 @onready var currency: Label = $ColorRect/ColorRect/Currency
 @onready var dash_button: Button = $"ColorRect/ColorRect/ShopList/Dash/Buy dash"
 @onready var shield_button: Button = $"ColorRect/ColorRect/ShopList/Shield/Buy Shield"
@@ -62,3 +64,8 @@ func handle_button_press(currency: int,switchFn: String ,button: Button):
 	refresh_currency()
 	button.text = "Owned"
 	button.disabled = true
+
+
+func _on_back_pressed():
+	hide()
+	pre_scene.reset_focus()

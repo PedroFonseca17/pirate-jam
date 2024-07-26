@@ -1,0 +1,6 @@
+Psiquiatris (Happy): How can I assist you?
+- Access upgrade shop
+	[signal arg="shop"]
+- Return to the Nigredo
+	Psiquiatris (Happy): Be brave, you can do this.
+	[signal arg="begin run"]
