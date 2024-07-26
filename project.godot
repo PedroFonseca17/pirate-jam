@@ -31,6 +31,7 @@ directories/dch_directory={
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
+"Back_from_Shop": "res://Dialogs/Back_from_Shop.dtl",
 "Bridge_dialog": "res://assets/character/Bridge_dialog.dtl",
 "back_to_the_beginning": "res://Dialogs/back_to_the_beginning.dtl",
 "start_Dialog": "res://Dialogs/start_Dialog.dtl"

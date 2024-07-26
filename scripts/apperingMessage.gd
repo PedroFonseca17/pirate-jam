@@ -1,10 +1,13 @@
 extends Control
 
 var message: String = (
-	"dfhgskdfgsdkfgsdfg
-	sdfgsdfgsdgsdfgds
-	sdgsdgsdfgsdgsdfg
-	sdfgsdfgsdfgsdfgsdf
+	"
+	The \"Nigredo\"
+	(alchemy)
+	
+	First phase of the alchemical process in achieving purification of the soul, \n preparing oneself for subsequent stages of purification and enlightenment.
+	
+	Sabina, this is the start of your journey. 
 	"
 )
 

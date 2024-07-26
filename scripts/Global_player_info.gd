@@ -9,6 +9,8 @@ var more_currency: bool = false
 
 var currency: int = 2000
 
+var intro_scene: bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -48,5 +50,8 @@ func switch_more_currency():
 		more_currency = false
 	else:
 		more_currency = true
+
+func view_intro_screen():
+	intro_scene = false
 
 	

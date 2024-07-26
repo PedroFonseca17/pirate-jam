@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdsu0qqu6kotf"]
+[gd_scene load_steps=7 format=3 uid="uid://cdsu0qqu6kotf"]
 
 [ext_resource type="Script" path="res://scripts/Hub_scene.gd" id="1_k0tda"]
 [ext_resource type="Script" path="res://scripts/apperingMessage.gd" id="2_4ghnm"]
+[ext_resource type="PackedScene" uid="uid://bueyi37se02e7" path="res://scenes/shop_UI.tscn" id="3_5aesb"]
 
 [sub_resource type="Animation" id="Animation_d0o6r"]
 length = 0.001
@@ -39,20 +40,16 @@ _data = {
 "open_eyes": SubResource("Animation_d1b8w")
 }
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_k0tda")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_k0tda")
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="ColorRect2" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.634737, 0.412034, 0.0773892, 1)
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,7 +67,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="ApperingText" type="Control" parent="CanvasLayer/Control"]
+[node name="ApperingText" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_4ghnm")
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ApperingText"]
+[node name="Label" type="Label" parent="ApperingText"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,14 +89,14 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="next leter" type="Timer" parent="CanvasLayer/Control/ApperingText"]
+[node name="next leter" type="Timer" parent="ApperingText"]
 
-[node name="Button" type="Button" parent="CanvasLayer/Control/ApperingText"]
+[node name="Button" type="Button" parent="ApperingText"]
 visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
@@ -115,11 +112,16 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Continue"
 
+[node name="shopUI" parent="." node_paths=PackedStringArray("pre_scene") instance=ExtResource("3_5aesb")]
+visible = false
+layout_mode = 1
+pre_scene = NodePath("..")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../CanvasLayer/Control/ColorRect")
+root_node = NodePath("../ColorRect")
 libraries = {
 "": SubResource("AnimationLibrary_agj16")
 }
 
-[connection signal="timeout" from="CanvasLayer/Control/ApperingText/next leter" to="CanvasLayer/Control/ApperingText" method="_on_next_leter_timeout"]
-[connection signal="pressed" from="CanvasLayer/Control/ApperingText/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="ApperingText/next leter" to="ApperingText" method="_on_next_leter_timeout"]
+[connection signal="pressed" from="ApperingText/Button" to="." method="_on_button_pressed"]
