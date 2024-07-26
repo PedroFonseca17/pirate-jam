@@ -1,8 +1,9 @@
 extends State
 class_name EnemyIdle
 
-@export var enemy: Enemy
+@export var enemy: CharacterBody2D
 @export var move_speed := 140.0
+@export var vision_range := 500
 
 var player : CharacterBody2D
 
@@ -30,8 +31,14 @@ func Physics_Update(delta: float):
 		enemy.velocity = move_direction * move_speed
 		
 	var direction = player.global_position - enemy.global_position
-	if direction.length() < 250:
-		Transitioned.emit(self, 'Follow')
+	if direction.length() < vision_range:
+		if enemy.is_in_group("RangedEnemies"):
+			Transitioned.emit(self, 'RangeAttack')
+		else:
+			Transitioned.emit(self, 'Follow')
 
 func on_enemy_hit():
-	Transitioned.emit(self, 'Follow')
+	if enemy.is_in_group("RangedEnemies"):
+		Transitioned.emit(self, 'RangeAttack')
+	else:
+		Transitioned.emit(self, 'Follow')

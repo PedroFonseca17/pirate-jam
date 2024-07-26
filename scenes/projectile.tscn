@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ee5wiviw1k0p"]
+[gd_scene load_steps=4 format=3 uid="uid://ee5wiviw1k0p"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_80t0s"]
 [ext_resource type="Texture2D" uid="uid://dijvkpobpubwm" path="res://assets/Sushi.png" id="2_b2j06"]
@@ -6,18 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_tntv2"]
 radius = 21.0238
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eq03m"]
-lifetime_randomness = 0.3
-particle_flag_disable_z = true
-spread = 180.0
-flatness = 0.167
-initial_velocity_min = 188.03
-initial_velocity_max = 250.7
-gravity = Vector3(0, 98, 0)
-
 [node name="Projectile" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_80t0s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -26,14 +17,16 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_b2j06")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 light_mask = 2
 visibility_layer = 2
 position = Vector2(-2, -19)
 shape = SubResource("CircleShape2D_tntv2")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 light_mask = 2
@@ -44,12 +37,6 @@ shape = SubResource("CircleShape2D_tntv2")
 [node name="Life" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-z_index = 5
-position = Vector2(0, -19)
-amount = 29
-process_material = SubResource("ParticleProcessMaterial_eq03m")
 
 [node name="ExplosionTimer" type="Timer" parent="."]
 wait_time = 0.2

@@ -12,24 +12,20 @@ var knockback_velocity: Vector2 = Vector2.ZERO
 signal Hitbox_hit
 
 func damage(attack: Attack):
-	print("attack", attack)
 	if health_component:
 		health_component.damage(attack)
-		print(attack.attack_position)
-		apply_knockback(attack)
 		Hitbox_hit.emit()
 
-func apply_knockback(attack: Attack):
-	print("body", body)
-	if body:
-		print('applied knockback')
-		var knockback_direction = (body.global_position - attack.attack_position).normalized()
-		var knockback_velocity = knockback_direction * attack.knockback_force
-		body.velocity += knockback_velocity
 
-func _physics_process(delta):
-	if body:
-		# Apply knockback velocity to the body
-		body.velocity += knockback_velocity * delta
-		# Reduce the knockback velocity over time using friction
-		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * delta)
+
+#func apply_knockback(attack: Attack):
+#if body:
+#	var knockback_direction = (body.global_position - attack.attack_position).normalized()
+#	var knockback_velocity = knockback_direction * attack.knockback_force
+#	body.velocity += knockback_velocity
+#	
+#	if body:
+#		# Apply knockback velocity to the body
+#		body.velocity += knockback_velocity * delta
+#		# Reduce the knockback velocity over time using friction
+#		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_friction * delta)

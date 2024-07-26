@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdc71gxsy126o"
+path="res://.godot/imported/sabina-hurt.mp3-1c87a7ea2f5eaf0b9633e0c44a320f12.mp3str"
+
+[deps]
+
+source_file="res://assets/sound effects/sabina-hurt.mp3"
+dest_files=["res://.godot/imported/sabina-hurt.mp3-1c87a7ea2f5eaf0b9633e0c44a320f12.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
