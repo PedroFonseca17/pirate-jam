@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cwu2hdyprj8eh" path="res://assets/TilesetFloor.png" id="1_1n6wm"]
 [ext_resource type="PackedScene" uid="uid://drt1incjfm4cv" path="res://scenes/player.tscn" id="2_e6ttb"]
+[ext_resource type="PackedScene" uid="uid://dm4brpia2ep42" path="res://scenes/pause_menu.tscn" id="3_wq7rd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djmgx"]
 texture = ExtResource("1_1n6wm")
@@ -483,6 +484,8 @@ position = Vector2(5, -197)
 scale = Vector2(1.8, 1)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_e6ttb")]
+
+[node name="PauseMenu" parent="player" instance=ExtResource("3_wq7rd")]
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-114, -516)

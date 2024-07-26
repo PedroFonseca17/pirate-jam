@@ -1,0 +1,11 @@
+Sabina (default): The bridge here is broken.
+Sabina (default): I cannot continue. I don't think I can do this...
+Psiquiatris (Happy): Sabina, do not give up. Allow me to lend you my aid.
+[signal arg="restore_bridge"]
+Psiquiatris (default): Anytime you feel overwhelmed, I will help you get through.
+[style name="Info style"]
+You have now unlocked the Upgrade Shop.\
+In order to help you through your journey in the Nigredo, you will be able to access it every time you are defeated to purchase upgrades.\
+\
+Choose with caution.
+[style name="dialog_style"]
