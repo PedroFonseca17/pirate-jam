@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7hcxd3gknyj"
-path="res://.godot/imported/sabina-idle-side.png-bbe0ebeb5c7da20f867adc1f5f15c2d8.ctex"
+uid="uid://ht42l6xkyq67"
+path="res://.godot/imported/normal-back.png-f886ed4c516a6efc490cb35e53c2e5a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sabina-idle-side.png"
-dest_files=["res://.godot/imported/sabina-idle-side.png-bbe0ebeb5c7da20f867adc1f5f15c2d8.ctex"]
+source_file="res://assets/normal-back.png"
+dest_files=["res://.godot/imported/normal-back.png-f886ed4c516a6efc490cb35e53c2e5a9.ctex"]
 
 [params]
 

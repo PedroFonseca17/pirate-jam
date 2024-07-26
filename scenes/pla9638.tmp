@@ -1,7 +1,6 @@
-[gd_scene load_steps=75 format=3 uid="uid://drt1incjfm4cv"]
+[gd_scene load_steps=66 format=3 uid="uid://drt1incjfm4cv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3ncmx"]
-[ext_resource type="Texture2D" uid="uid://yxrtrhniskjb" path="res://assets/sabina-attack-front.png" id="2_aewb2"]
 [ext_resource type="Texture2D" uid="uid://dhwth4djmb4ln" path="res://assets/sabina-idle-down.png" id="2_afdkj"]
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="3_6p7dp"]
 [ext_resource type="Texture2D" uid="uid://b7hcxd3gknyj" path="res://assets/sabina-idle-side.png" id="3_8cdum"]
@@ -15,26 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://b7baobsjtlsnb" path="res://assets/light.png" id="12_xaliv"]
 [ext_resource type="AudioStream" uid="uid://ia82fcf4tfue" path="res://assets/sound effects/sabina-attack.mp3" id="13_bxun5"]
 [ext_resource type="AudioStream" uid="uid://cdc71gxsy126o" path="res://assets/sound effects/sabina-hurt.mp3" id="14_lt80n"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2dsg1"]
-atlas = ExtResource("2_aewb2")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p5fx5"]
-atlas = ExtResource("2_aewb2")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_46b1n"]
-atlas = ExtResource("2_aewb2")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0amxx"]
-atlas = ExtResource("2_aewb2")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nukq6"]
-atlas = ExtResource("2_aewb2")
-region = Rect2(2048, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2300"]
 atlas = ExtResource("2_afdkj")
@@ -232,35 +211,6 @@ region = Rect2(1536, 0, 512, 512)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2dsg1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5fx5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_46b1n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0amxx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nukq6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0amxx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_46b1n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p5fx5")
-}],
-"loop": false,
-"name": &"attack_front",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_d2300")
 }, {
 "duration": 1.0,
@@ -445,59 +395,22 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_38ya4"]
-radius = 70.2959
+radius = 51.1566
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nwbq"]
-size = Vector2(30.7927, 66.8182)
-
-[sub_resource type="Animation" id="Animation_n4u4b"]
-resource_name = "HIT"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.533333, 0.101961, 0.101961, 1), Color(1, 1, 1, 1), Color(0.533333, 0.101961, 0.101961, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_sdb3r"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lya8s"]
-_data = {
-"HIT": SubResource("Animation_n4u4b"),
-"RESET": SubResource("Animation_sdb3r")
-}
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 5
+collision_mask = 3
 script = ExtResource("1_3ncmx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -22)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1byn6")
-animation = &"attack_front"
+animation = &"idle_up"
 autoplay = "idle_down"
-frame = 7
-frame_progress = 1.0
+frame_progress = 0.30671
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -505,55 +418,35 @@ one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_6p7dp")]
 position = Vector2(-54, 6)
-MAX_HEALTH = 1e+06
+MAX_HEALTH = 30.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "body") instance=ExtResource("4_v7w3w")]
+visible = false
 position = Vector2(-54, -137)
 health_component = NodePath("../HealthComponent")
 body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(54, 112)
+position = Vector2(54, 151)
 scale = Vector2(1.65076, 1.59408)
 shape = SubResource("CircleShape2D_38ya4")
-debug_color = Color(0.911566, 0.0745995, 0.695638, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -23.1)
+position = Vector2(3, 49)
 scale = Vector2(3.28, 3.08)
 shape = SubResource("RectangleShape2D_0nwbq")
 
-[node name="shadow" type="PointLight2D" parent="."]
-range_item_cull_mask = 32
-shadow_enabled = true
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+energy = 0.5
 texture = ExtResource("12_xaliv")
-texture_scale = 5.0
-
-[node name="light" type="PointLight2D" parent="."]
-energy = 0.56
-shadow_color = Color(0, 0, 0, 0.768627)
-shadow_filter = 2
-shadow_filter_smooth = 15.5
-shadow_item_cull_mask = 3
-texture = ExtResource("12_xaliv")
-texture_scale = 5.0
+texture_scale = 2.5
 
 [node name="shootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_bxun5")
-bus = &"Sound Effect"
 
 [node name="hitShound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_lt80n")
-bus = &"Sound Effect"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_lya8s")
-}
-
-[node name="ShootCooldownTimer" type="Timer" parent="."]
-one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
-[connection signal="timeout" from="ShootCooldownTimer" to="." method="_on_shoot_cooldown_timer_timeout"]

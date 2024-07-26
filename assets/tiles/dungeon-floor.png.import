@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7hcxd3gknyj"
-path="res://.godot/imported/sabina-idle-side.png-bbe0ebeb5c7da20f867adc1f5f15c2d8.ctex"
+uid="uid://cepu6laac40hc"
+path="res://.godot/imported/dungeon-floor.png-960b28d23368c2f6a9ae12bcad5f6d58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sabina-idle-side.png"
-dest_files=["res://.godot/imported/sabina-idle-side.png-bbe0ebeb5c7da20f867adc1f5f15c2d8.ctex"]
+source_file="res://assets/tiles/dungeon-floor.png"
+dest_files=["res://.godot/imported/dungeon-floor.png-960b28d23368c2f6a9ae12bcad5f6d58.ctex"]
 
 [params]
 

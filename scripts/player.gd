@@ -16,6 +16,11 @@ var last_direction_change_time = 0.0
 @onready var dash_cooldown_timer = $DashCooldownTimer
 @onready var projectile = preload("res://scenes/projectile.tscn")
 @onready var hitbox_component = $HitboxComponent
+@onready var shoot_sound = $shootSound
+@onready var hit_sound = $hitSound
+@onready var health_component = $HealthComponent
+@onready var animation_player = $AnimationPlayer
+@onready var shoot_cooldown_timer = $ShootCooldownTimer # Ensure you have a Timer node named "ShootCooldownTimer"
 
 # Dash properties
 const dash_speed = 1250.0
@@ -27,8 +32,10 @@ var dash_direction = Vector2.ZERO
 
 # Attack variables
 var attack_damage = 20
+var isAttackingAnimation = false
 
 func _ready():
+	hitbox_component.Hitbox_hit.connect(on_hit)
 	dash_cooldown_timer.wait_time = 1.0
 	set_state(State.IDLE)
 
@@ -51,7 +58,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("dash") and not is_dashing and dash_cooldown_timer.is_stopped():
 		start_dash(direction)
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and shoot_cooldown_timer.is_stopped():
 		shoot()
 	
 	velocity += (hitbox_component.knockback_velocity * delta)
@@ -86,8 +93,16 @@ func start_dash(direction):
 	dash_cooldown_timer.start()
 
 func shoot():
+	shoot_sound.play()
 	var projectile_instance = projectile.instantiate() as Projectile
-	var offset = last_faced_direction * 50
+	animations.play("attack_front")
+	isAttackingAnimation = true
+	# Set a fixed offset point relative to the player
+	var offset = Vector2(0, -10) # You may adjust this to fit your needs
+	if last_faced_direction.x != 0:
+		offset = Vector2(50 * last_faced_direction.x, 0)
+	elif last_faced_direction.y != 0:
+		offset = Vector2(0, 50 * last_faced_direction.y)
 	projectile_instance.dir = last_faced_direction.angle()
 	projectile_instance.spawnPos = global_position + offset
 	projectile_instance.spawnRot = last_faced_direction.angle()
@@ -95,40 +110,45 @@ func shoot():
 	projectile_instance.attack_damage = attack_damage
 	projectile_instance.knockback_force = 50
 	get_parent().add_child(projectile_instance)
+	shoot_cooldown_timer.start(0.3) # Start the cooldown timer for shooting
+
+func _on_shoot_cooldown_timer_timeout():
+	# This function is called when the shoot cooldown timer times out
+	pass
 
 func updateAnimation():
 	match current_state:
 		State.IDLE:
-			if last_faced_direction.x != 0:
+			if last_faced_direction.x != 0 and !isAttackingAnimation:
 				animations.flip_h = last_faced_direction.x > 0
 				animations.play("idle_side")
-			elif last_faced_direction.y < 0:
+			elif last_faced_direction.y < 0 and !isAttackingAnimation:
 				animations.play("idle_up")
-			elif last_faced_direction.y > 0:
+			elif last_faced_direction.y > 0 and !isAttackingAnimation:
 				animations.play("idle_down")
 		State.START_MOVE:
-			if velocity.x != 0:
+			if velocity.x != 0 and !isAttackingAnimation:
 				animations.flip_h = velocity.x > 0
 				animations.play("start_move")
-			elif velocity.y < 0:
+			elif velocity.y < 0 and !isAttackingAnimation:
 				animations.play("loop_move_up")
-			elif velocity.y > 0:
+			elif velocity.y > 0 and !isAttackingAnimation:
 				animations.play("loop_move_down")
 		State.LOOP_MOVE:
-			if velocity.x != 0:
+			if velocity.x != 0 and !isAttackingAnimation:
 				animations.flip_h = velocity.x > 0
 				animations.play("loop_move")
-			elif velocity.y < 0:
+			elif velocity.y < 0 and !isAttackingAnimation:
 				animations.play("loop_move_up")
-			elif velocity.y > 0:
+			elif velocity.y > 0 and !isAttackingAnimation:
 				animations.play("loop_move_down")
 		State.STOP_MOVE:
-			if last_faced_direction.x != 0:
+			if last_faced_direction.x != 0 and !isAttackingAnimation:
 				animations.flip_h = last_faced_direction.x > 0
 				animations.play("stop_move")
-			elif last_faced_direction.y < 0:
+			elif last_faced_direction.y < 0 and !isAttackingAnimation:
 				animations.play("idle_up")
-			elif last_faced_direction.y > 0:
+			elif last_faced_direction.y > 0 and !isAttackingAnimation:
 				animations.play("idle_down")
 
 func set_state(new_state):
@@ -139,9 +159,13 @@ func set_state(new_state):
 	updateAnimation()
 
 func _on_animated_sprite_2d_animation_finished():
-	print("finished animations")
 	if current_state == State.START_MOVE:
 		set_state(State.LOOP_MOVE)
 	elif current_state == State.STOP_MOVE:
 		set_state(State.IDLE)
+		
+	isAttackingAnimation = false
 
+func on_hit():
+	# hit_sound.play()
+	animation_player.play("HIT")

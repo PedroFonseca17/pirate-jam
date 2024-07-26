@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7hcxd3gknyj"
-path="res://.godot/imported/sabina-idle-side.png-bbe0ebeb5c7da20f867adc1f5f15c2d8.ctex"
+uid="uid://c7sd6qdvyqxyb"
+path="res://.godot/imported/mage-back.png-b5cf7c3ada5748033acc711cd84076fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sabina-idle-side.png"
-dest_files=["res://.godot/imported/sabina-idle-side.png-bbe0ebeb5c7da20f867adc1f5f15c2d8.ctex"]
+source_file="res://assets/sound effects/mage-back.png"
+dest_files=["res://.godot/imported/mage-back.png-b5cf7c3ada5748033acc711cd84076fc.ctex"]
 
 [params]
 
