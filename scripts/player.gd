@@ -11,21 +11,25 @@ enum State {
 var current_state = State.IDLE
 var last_direction_change_time = 0.0
 
+
 @export var speed: int = 750
 @onready var animations = $AnimatedSprite2D
 @onready var dash_cooldown_timer = $DashCooldownTimer
 @onready var projectile = preload("res://scenes/projectile.tscn")
 @onready var hitbox_component = $HitboxComponent
 @onready var shoot_sound = $shootSound
-@onready var hit_sound = $hitSound
+@onready var hit_shound = $hitShound
 @onready var health_component = $HealthComponent
 @onready var animation_player = $AnimationPlayer
 @onready var shoot_cooldown_timer = $ShootCooldownTimer # Ensure you have a Timer node named "ShootCooldownTimer"
+@onready var arrow_sprite = $arrow
+
 
 # Dash properties
 const dash_speed = 1250.0
 var dash_time_left = 0.5  # Duration of the dash
 var last_faced_direction = Vector2.RIGHT
+var last_faced_shot = Vector2.RIGHT
 
 var is_dashing = false
 var dash_direction = Vector2.ZERO
@@ -50,6 +54,10 @@ func _physics_process(delta):
 			move_and_slide()
 			return
 	
+	# Maintain the value as true whhile shooting is pressed
+	if Input.is_action_pressed("shoot"):
+		isAttackingAnimation = true
+	
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if direction != Vector2.ZERO:
@@ -65,6 +73,7 @@ func _physics_process(delta):
 	handleMovementInput()
 	move_and_slide()
 	updateAnimation()
+	update_arrow_direction()
 
 func handleMovementInput():
 	var moveDirection = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -95,22 +104,89 @@ func start_dash(direction):
 func shoot():
 	shoot_sound.play()
 	var projectile_instance = projectile.instantiate() as Projectile
-	animations.play("attack_front")
+	var offset = Vector2(0, 0) # Default offset
+
+	# Check for arrow keys and adjust the direction and offset accordingly
+	if Input.is_action_pressed("ui_left"):
+		last_faced_shot = Vector2(-1, 0)
+		offset = Vector2(-50, 0)
+		animations.play("attack_left")
+	elif Input.is_action_pressed("ui_right"):
+		last_faced_shot = Vector2(1, 0)
+		offset = Vector2(50, 0)
+		# Make sure flit is not on
+		animations.flip_h = false
+		animations.play("attack_right")
+	elif Input.is_action_pressed("ui_up"):
+		last_faced_shot = Vector2(0, -1)
+		offset = Vector2(0, -50)
+		animations.play("attack_back")
+	elif Input.is_action_pressed("ui_down"):
+		last_faced_shot = Vector2(0, 1)
+		
+		offset = Vector2(0, 50)
+		animations.play("attack_front")
+	else:
+		# If no arrow key is pressed, use the last known direction
+		last_faced_shot = last_faced_direction
+		if last_faced_direction.x < 0:
+			animations.play("attack_left")
+			last_faced_shot = last_faced_direction
+		elif last_faced_direction.x > 0:
+			animations.flip_h = false
+			animations.play("attack_right")
+		elif last_faced_direction.y < 0:
+			animations.play("attack_back")
+		elif last_faced_direction.y > 0:
+			animations.play("attack_front")
+
 	isAttackingAnimation = true
-	# Set a fixed offset point relative to the player
-	var offset = Vector2(0, -10) # You may adjust this to fit your needs
-	if last_faced_direction.x != 0:
-		offset = Vector2(50 * last_faced_direction.x, 0)
-	elif last_faced_direction.y != 0:
-		offset = Vector2(0, 50 * last_faced_direction.y)
-	projectile_instance.dir = last_faced_direction.angle()
+
+	# Ensure the projectile direction is set based on the last_faced_shot
+	projectile_instance.dir = last_faced_shot.angle()
 	projectile_instance.spawnPos = global_position + offset
-	projectile_instance.spawnRot = last_faced_direction.angle()
+	projectile_instance.spawnRot = last_faced_shot.angle()
 	projectile_instance.zdex = z_index - 1
 	projectile_instance.attack_damage = attack_damage
 	projectile_instance.knockback_force = 50
 	get_parent().add_child(projectile_instance)
 	shoot_cooldown_timer.start(0.3) # Start the cooldown timer for shooting
+
+
+func update_arrow_direction():
+	# Get the player's width and height
+	var player_size = Vector2(256, 256)
+
+	# Default position is on the right side of the player
+	var offset = Vector2(player_size.x / 2, 0)
+
+	if Input.is_action_pressed("ui_left"):
+		arrow_sprite.modulate.a = clamp(1, 0.0, 1.0)
+		arrow_sprite.rotation_degrees = 180
+		arrow_sprite.flip_v = true
+		offset = Vector2(-player_size.x / 2, 0)
+	elif Input.is_action_pressed("ui_right"):
+		arrow_sprite.modulate.a = clamp(1, 0.0, 1.0)
+		arrow_sprite.rotation_degrees = 0
+		arrow_sprite.flip_h = false
+		offset = Vector2(player_size.x / 2, 0)
+	elif Input.is_action_pressed("ui_up"):
+		arrow_sprite.modulate.a = clamp(1, 0.0, 1.0)
+		arrow_sprite.rotation_degrees = -90
+		arrow_sprite.flip_h = false
+		offset = Vector2(0, -player_size.y / 1.5)
+	elif Input.is_action_pressed("ui_down"):
+		arrow_sprite.modulate.a = clamp(1, 0.0, 1.0)
+		arrow_sprite.rotation_degrees = 90
+		arrow_sprite.flip_h = false
+		offset = Vector2(0, player_size.y / 1.5)
+	else:
+		#Hide the arrow if no key is pressed
+		arrow_sprite.modulate.a = clamp(0.0, 0.0, 1.0)
+
+	# Update the arrow sprite position relative to the player's local position
+	arrow_sprite.position = offset
+
 
 func _on_shoot_cooldown_timer_timeout():
 	# This function is called when the shoot cooldown timer times out
@@ -120,7 +196,7 @@ func updateAnimation():
 	match current_state:
 		State.IDLE:
 			if last_faced_direction.x != 0 and !isAttackingAnimation:
-				animations.flip_h = last_faced_direction.x > 0
+				animations.flip_h = last_faced_direction.x > 0 and !isAttackingAnimation
 				animations.play("idle_side")
 			elif last_faced_direction.y < 0 and !isAttackingAnimation:
 				animations.play("idle_up")

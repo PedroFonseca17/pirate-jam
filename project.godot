@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="pirate game jam"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/level_2.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -148,11 +148,13 @@ interact={
 
 2d_render/layer_1="player"
 2d_render/layer_2="enemy"
+2d_render/layer_4="boss"
 2d_render/layer_6="floor"
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="projectile"
 2d_physics/layer_4="walls"
+2d_physics/layer_5="boss"
 
 [rendering]
 
