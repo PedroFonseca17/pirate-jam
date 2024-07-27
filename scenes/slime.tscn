@@ -289,11 +289,13 @@ size = Vector2(72, 71)
 script = ExtResource("1_yc7aw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_kn4kv")
-animation = &"side"
+animation = &"front"
 autoplay = "front"
-frame_progress = 0.80236
+frame = 14
+frame_progress = 0.699113
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 9.5)
