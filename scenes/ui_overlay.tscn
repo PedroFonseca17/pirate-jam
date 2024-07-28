@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvhgbelhkywan"]
+[gd_scene load_steps=10 format=3 uid="uid://cvhgbelhkywan"]
 
 [ext_resource type="PackedScene" uid="uid://o2o4sdgmnik0" path="res://scenes/HealthBar.tscn" id="1_2cv0e"]
 [ext_resource type="Script" path="res://scripts/ui_overlay.gd" id="1_dm7uo"]
+[ext_resource type="Texture2D" uid="uid://btqjowkkwu1va" path="res://assets/doublelife_nb.png" id="3_brqsc"]
 [ext_resource type="Texture2D" uid="uid://cyehnk7k0dvrq" path="res://assets/dash_nb.png" id="3_g5foi"]
 [ext_resource type="Texture2D" uid="uid://bs8hjdqscu04" path="res://assets/doubleshot_nb.png" id="4_a778y"]
+[ext_resource type="Texture2D" uid="uid://ccsbird4xfbiv" path="res://assets/shield_nb.png" id="4_nyas6"]
+[ext_resource type="Texture2D" uid="uid://cv6simtc55qel" path="res://assets/currency_nb.png" id="7_vmwqv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i471o"]
 bg_color = Color(0.525101, 0.525101, 0.525101, 1)
@@ -45,6 +48,26 @@ scale = Vector2(0.9, 0.9)
 theme_override_constants/separation = 10
 alignment = 2
 
+[node name="Double Revive" type="Panel" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i471o")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Double Revive"]
+position = Vector2(50, 50)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_brqsc")
+
+[node name="Double Shield" type="Panel" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i471o")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Double Shield"]
+position = Vector2(50, 50)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_nyas6")
+
 [node name="Double Dash" type="Panel" parent="CanvasLayer/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -65,18 +88,34 @@ position = Vector2(50, 50)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("4_a778y")
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-custom_minimum_size = Vector2(200, 80)
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(200, 100)
 anchors_preset = -1
 anchor_left = 0.98
 anchor_top = 0.03
 anchor_right = 0.98
 anchor_bottom = 0.03
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -200.0
+offset_bottom = 100.0
 grow_horizontal = 0
+scale = Vector2(0.9, 0.9)
+theme_override_constants/separation = 10
+alignment = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+[node name="Image" type="Panel" parent="CanvasLayer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer2/Image"]
+position = Vector2(50, 50)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_vmwqv")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer2/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,5 +129,6 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
+text = "10000"
 horizontal_alignment = 1
 vertical_alignment = 1

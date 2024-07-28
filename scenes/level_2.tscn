@@ -151,7 +151,6 @@ position = Vector2(2027, -907)
 body = NodePath("../..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.37918, 0.37918, 0.37918, 1)
 metadata/_edit_lock_ = true
 

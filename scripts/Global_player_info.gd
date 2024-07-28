@@ -1,10 +1,10 @@
 extends Node
 
 #Switches that conbtrol powerups
-var dash: bool = true
+var dash: bool = false
 var shield: bool = false
 var revive: bool = false
-var double_shot: bool = true
+var double_shot: bool = false
 var more_currency: bool = false
 
 var currency: int = 2000
