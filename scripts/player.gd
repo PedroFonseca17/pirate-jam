@@ -35,7 +35,7 @@ var is_dashing = false
 var dash_direction = Vector2.ZERO
 
 # Attack variables
-var attack_damage = 20
+var attack_damage = 5
 var isAttackingAnimation = false
 
 func _ready():

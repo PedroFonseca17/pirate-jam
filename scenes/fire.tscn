@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://hpp632fic4p8"]
+
+[ext_resource type="Texture2D" uid="uid://c344emevrab58" path="res://assets/Flame.png" id="1_rifsd"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b8omo"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_670wr"]
+offsets = PackedFloat32Array(0, 0.0963542, 0.807292, 0.989583)
+colors = PackedColorArray(0, 0, 0, 0, 0.764737, 0.366204, 0.8478, 1, 0.470705, 0.00919711, 0.565119, 1, 0.541176, 0.0980392, 0.635294, 0)
+
+[node name="Flame" type="CPUParticles2D"]
+material = SubResource("CanvasItemMaterial_b8omo")
+amount = 26
+explosiveness = 0.8
+randomness = 0.5
+fixed_fps = 30
+draw_order = 1
+texture = ExtResource("1_rifsd")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 98)
+initial_velocity_min = 255.0
+initial_velocity_max = 255.0
+damping_min = 80.0
+damping_max = 80.0
+color_ramp = SubResource("Gradient_670wr")

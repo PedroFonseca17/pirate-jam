@@ -4,12 +4,15 @@ extends Node
 
 var current_state : State
 var states : Dictionary = {}
+var shared_context : SharedContext
 
 func _ready():
+	shared_context = SharedContext.new()
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.Transitioned.connect(on_child_transition)
+			child.set_context(shared_context)
 
 	if initial_state:
 		initial_state.Enter()

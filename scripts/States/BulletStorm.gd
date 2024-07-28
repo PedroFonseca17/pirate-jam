@@ -10,7 +10,6 @@ var player : CharacterBody2D
 var is_attacking = false
 var last_faced_direction := Vector2.RIGHT
 var attack_damage := 10.0
-var active_projectiles = 0
 
 func Enter():
 	print("was bullet storm called?")
@@ -41,15 +40,8 @@ func shoot():
 		projectile_instance.attack_damage = attack_damage
 		projectile_instance.knockback_force = 50
 		
-		# Connect projectile destruction signal to track active projectiles
-		active_projectiles += 1
-		
 		get_parent().add_child(projectile_instance)
 
-func _on_projectile_destroyed():
-	print("projectile destroyed")
-	active_projectiles -= 1
-
 func _wait_for_all_projectiles() -> void:
-	print("waiting", active_projectiles)
-	Transitioned.emit(self, 'BossTeleport')
+	print("gojng to aoe")
+	Transitioned.emit(self, 'BossAOE')
