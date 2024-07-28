@@ -31,7 +31,6 @@ var probabilities = {
 }
 
 func Enter():
-	print("AOE starting")
 	animations.connect("animation_finished", self._on_animation_finished)
 	animations.scale = Vector2(2, 2)
 	animations.play("disappear")
@@ -46,7 +45,6 @@ func _start_aoe() -> void:
 	if context.data.get("first_aoe_attack", false) == false:
 		await first_pattern_aoe()
 	else:
-		print("run random")
 		await run_random_aoe_function()
 	handleAttackAnimation("end_attack")
 	
@@ -64,13 +62,11 @@ func handleAreaExplosion(side: String):
 
 func apply_damage():
 	var attack = Attack.new()
-	print("player attacked")
 	attack.attack_damage = attack_damage
 	attack.knockback_force = knockback_force
 	attack.attack_position = boss.global_position
 	var hitboxComponent: HitboxComponent = player.get_node("HitboxComponent")
 	if hitboxComponent:
-		print("player attacked")
 		hitboxComponent.damage(attack)
 
 func _is_player_inside(area: Area2D) -> bool:
@@ -99,7 +95,6 @@ func _on_animation_finished():
 		teleportToMiddle()
 		
 func teleportToMiddle():
-	print("did i teleport on the aoe?")
 	# Get the CollisionShape2D node
 	var collision_shape = teleport_area.get_child(0) as CollisionShape2D
 	# Check if the collision shape is a RectangleShape2D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://hntg0kxckryy"]
+[gd_scene load_steps=62 format=3 uid="uid://hntg0kxckryy"]
 
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="1_mlutj"]
 [ext_resource type="Script" path="res://scripts/ranged_enemy.gd" id="1_vm42c"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/States/EnemyIdle.gd" id="7_bp3dp"]
 [ext_resource type="Script" path="res://scripts/States/EnemyRangeAttack.gd" id="8_ggohs"]
 [ext_resource type="Texture2D" uid="uid://bljxjmerjnceh" path="res://assets/mage-side-attack.png" id="8_uy7qy"]
+[ext_resource type="Script" path="res://scripts/currency_controller.gd" id="13_m0rmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w52v7"]
 atlas = ExtResource("2_8em2p")
@@ -445,6 +446,42 @@ size = Vector2(98, 134)
 [sub_resource type="CircleShape2D" id="CircleShape2D_06d6u"]
 radius = 76.0066
 
+[sub_resource type="Animation" id="Animation_v8w4y"]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.945098, 0.270588, 0, 1), Color(1, 1, 1, 1), Color(0.945098, 0.270588, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nlqh0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjmx0"]
+_data = {
+"RESET": SubResource("Animation_nlqh0"),
+"hit": SubResource("Animation_v8w4y")
+}
+
 [node name="RangedEnemy" type="CharacterBody2D" groups=["Enemies", "RangedEnemies"]]
 z_index = 5
 script = ExtResource("1_vm42c")
@@ -480,5 +517,15 @@ enemy = NodePath("../..")
 [node name="RangeAttack" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_ggohs")
 enemy = NodePath("../..")
+
+[node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("13_m0rmp")
+health_component = NodePath("../HealthComponent")
+VALUE = 120.0
+
+[node name="HitAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pjmx0")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

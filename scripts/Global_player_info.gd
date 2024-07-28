@@ -1,34 +1,38 @@
 extends Node
 
 #Switches that conbtrol powerups
-var dash: bool = false
+var double_dash: bool = false
 var shield: bool = false
 var revive: bool = false
-var double_shot: bool = false
+var pill: bool = false
 var more_currency: bool = false
+var is_in_textbox_scene = false
+var player_health = null
+var used_shield = false
+var used_revive = false
 
-var currency: int = 2000
+var currency: int = 0
 signal change_currency
 
-var intro_scene: bool = true
+var intro_scene: bool = false # TODO: put to true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 func add_currency(amount):
-	change_currency.emit()
 	currency += amount
+	change_currency.emit()
 
 func remove_currency(amount):
 	change_currency.emit()
 	currency -= amount
 
-func switch_dash():
-	if dash:
-		dash = false
+func switch_double_dash():
+	if double_dash:
+		double_dash = false
 	else:
-		dash = true
+		double_dash = true
 
 func switch_shield():
 	if shield:
@@ -42,12 +46,6 @@ func switch_revive():
 	else:
 		revive = true
 
-func switch_double_shot():
-	if double_shot:
-		double_shot = false
-	else:
-		double_shot = true
-
 func switch_more_currency():
 	if more_currency:
 		more_currency = false
@@ -57,4 +55,25 @@ func switch_more_currency():
 func view_intro_screen():
 	intro_scene = false
 
+func switch_is_in_textbox_scene():
+	is_in_textbox_scene = !is_in_textbox_scene
 	
+
+func switch_pill():
+	pill = !pill
+
+func switch_used_shield():
+	used_shield = !used_shield
+
+func switch_used_revive():
+	used_revive = !used_revive
+
+func reset_on_change_level():
+	used_shield = false
+	
+func reset_on_start_run():
+	used_shield = false
+	used_revive = false
+	
+func reset_one_time_items():
+	pill = false

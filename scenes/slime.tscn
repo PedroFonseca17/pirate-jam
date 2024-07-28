@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cgbl7w3egk2sf"]
+[gd_scene load_steps=41 format=3 uid="uid://cgbl7w3egk2sf"]
 
 [ext_resource type="Texture2D" uid="uid://bfw8qx0s6oktm" path="res://assets/slime-front.png" id="1_dngsx"]
 [ext_resource type="Texture2D" uid="uid://bn4xtchmltuo0" path="res://assets/slime-back.png" id="1_uqc4s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/States/EnemyIdle.gd" id="6_k5kiw"]
 [ext_resource type="Script" path="res://scripts/States/EnemyFollow.gd" id="7_roglp"]
 [ext_resource type="PackedScene" uid="uid://c8nuyfj6l50ju" path="res://scenes/hitbox_component.tscn" id="8_s5sse"]
+[ext_resource type="Script" path="res://scripts/currency_controller.gd" id="10_dy76d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ea0ih"]
 atlas = ExtResource("1_uqc4s")
@@ -327,6 +328,11 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_roglp")
 enemy = NodePath("../..")
+
+[node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("10_dy76d")
+health_component = NodePath("../HealthComponent")
+VALUE = 20.0
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

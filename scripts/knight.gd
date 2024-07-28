@@ -55,7 +55,6 @@ func start_attack():
 	if !is_attacking:
 		if abs(velocity.x) > 100:
 			animated_sprite.flip_h = velocity.x > 0
-			print("play animation")
 			animated_sprite.play("side_attack")
 		elif velocity.y < -0.1:
 			animated_sprite.play("back_attack")

@@ -11,7 +11,10 @@ func _ready():
 	if body != null:
 		healthComponent = body.get_node("HealthComponent")
 		progress_bar.max_value = healthComponent.MAX_HEALTH
-		progress_bar.value = healthComponent.health
+		if body.is_in_group("Player") and GlobalPlayerInfo.player_health:
+			progress_bar.value = GlobalPlayerInfo.player_health
+		else:
+			progress_bar.value = healthComponent.health
 		healthComponent.receiveDamage.connect(on_receive_damage)
 
 func set_body(recieved_body: CharacterBody2D):
