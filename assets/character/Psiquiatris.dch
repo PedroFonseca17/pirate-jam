@@ -17,7 +17,7 @@
 "portraits": {
 "Happy": {
 "export_overrides": {
-"image": "\"\""
+"image": "\"res://assets/character/Dr_Jung.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
