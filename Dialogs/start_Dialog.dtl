@@ -5,18 +5,17 @@
 A therapy that enables one to confront their own Shadows within their own mind.\
 A controversial form of treatment typically discouraged due to its extensive list of adverse effects.
 ... Primary and most common side effect\: \
- > Permanent loss of oneself.
+> Permanent loss of oneself.
 [style name="dialog_style"]
 misterious_persone: Right... So, this is our last resort.
 misterious_persone: ... But... You will manage, right?
 misterious_persone: You have to. I cannot afford to lose you, my sweet dear Sabina.
 [style name="Info style"]
 Sabina Spielrein. This is now your name.
+[clear time="0.0" portraits="false" music="false" positions="false" style="false"]
 [style name="dialog_style"]
-[music path="res://assets/audio/whisper-evil-little-nothings-to-me-voices-in-your-head-196185.mp3" fade="2.0" volume="0.0"]
-[wait time="1.0"]
-[inaudible]
-[wait time="3.0" hide_text="false"]
+[music path="res://assets/audio/whisper-evil-little-nothings-to-me-voices-in-your-head-196185.mp3" fade="2.0" volume="-5.0"]
+[wait time="6.0" hide_text="false"]
 Psiquiatris (Happy): Sa... na...
 Psiquiatris (Happy): Sa... bi... na...
 Psiquiatris (Happy): Sabina?
