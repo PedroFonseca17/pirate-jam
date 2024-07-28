@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://ee5wiviw1k0p"]
+[gd_scene load_steps=6 format=3 uid="uid://ee5wiviw1k0p"]
 
 [ext_resource type="Script" path="res://scripts/Projectile.gd" id="1_80t0s"]
 [ext_resource type="Texture2D" uid="uid://dijvkpobpubwm" path="res://assets/Sushi.png" id="2_b2j06"]
+[ext_resource type="Texture2D" uid="uid://c344emevrab58" path="res://assets/Flame.png" id="3_wgcd6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mtwup"]
+blend_mode = 1
+light_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tntv2"]
 radius = 21.0238
@@ -11,7 +16,26 @@ collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_80t0s")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_mtwup")
+position = Vector2(-1, -19)
+scale = Vector2(0.3, 0.3)
+amount = 3
+speed_scale = 4.6
+explosiveness = 0.65
+local_coords = true
+texture = ExtResource("3_wgcd6")
+emission_shape = 1
+emission_sphere_radius = 22.9
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+color = Color(1.82897e-06, 0.55232, 0.736464, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -19)
 scale = Vector2(3, 3)
 texture = ExtResource("2_b2j06")

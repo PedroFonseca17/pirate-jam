@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://njhpriw650xb"]
+[gd_scene load_steps=56 format=3 uid="uid://njhpriw650xb"]
 
 [ext_resource type="Texture2D" uid="uid://c23ervt2x5vgd" path="res://assets/normal-front.png" id="1_8sry3"]
 [ext_resource type="Texture2D" uid="uid://ht42l6xkyq67" path="res://assets/normal-back.png" id="1_052i5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="7_4jg8v"]
 [ext_resource type="Script" path="res://scripts/States/EnemyIdle.gd" id="8_kxbp4"]
 [ext_resource type="Script" path="res://scripts/States/EnemyFollow.gd" id="9_ufl4q"]
+[ext_resource type="Script" path="res://scripts/currency_controller.gd" id="13_ybvg2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ue54j"]
 atlas = ExtResource("1_052i5")
@@ -460,6 +461,11 @@ script = ExtResource("9_ufl4q")
 enemy = NodePath("../..")
 
 [node name="AttackCoolDownTimer" type="Timer" parent="."]
+
+[node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("13_ybvg2")
+health_component = NodePath("../HealthComponent")
+VALUE = 80.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

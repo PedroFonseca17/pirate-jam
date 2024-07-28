@@ -37,7 +37,6 @@ var probabilities = {
 }
 
 func Enter():
-	print("AOE starting")
 	animations.connect("animation_finished", self._on_animation_finished)
 	animations.scale = Vector2(2, 2)
 	animations.play("disappear")
@@ -91,13 +90,11 @@ func handleAreaExplosion(side: String):
 
 func apply_damage():
 	var attack = Attack.new()
-	print("player attacked")
 	attack.attack_damage = attack_damage
 	attack.knockback_force = knockback_force
 	attack.attack_position = boss.global_position
 	var hitboxComponent: HitboxComponent = player.get_node("HitboxComponent")
 	if hitboxComponent:
-		print("player attacked")
 		hitboxComponent.damage(attack)
 
 func _is_player_inside(area: Area2D) -> bool:
@@ -134,8 +131,6 @@ func teleportToMiddle():
 		var rect_shape = collision_shape.shape as RectangleShape2D
 		var area_position = teleport_area.global_position
 		var extents = rect_shape.extents
-		print("extents", extents)
-		print("area_position", area_position)
 		
 		# The global position of the teleport area is already the center
 		boss.global_position = area_position

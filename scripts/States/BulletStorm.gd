@@ -12,18 +12,26 @@ var last_faced_direction := Vector2.RIGHT
 var attack_damage := 10.0
 
 func Enter():
-	print("was bullet storm called?")
 	call_deferred("_shooting_sequence")
 
 func _shooting_sequence() -> void:
 	# Handle animation side
+	var tree = get_tree()
+	if !tree:
+		return
 	await get_tree().create_timer(1.0).timeout # Initial delay before starting the shooting sequence
 	for i in range(30):
+		tree = get_tree()
+		if !tree:
+			return
 		shoot()
-		await get_tree().create_timer(0.2).timeout # Wait 0.2 seconds between each shot
+		await tree.create_timer(0.2).timeout # Wait 0.2 seconds between each shot
 	await _wait_for_all_projectiles()
 
 func shoot():
+	var tree = get_tree()
+	if !tree:
+		return
 	var projectile_instance = projectile.instantiate() as MageProjectile
 	player = get_tree().get_first_node_in_group("Player")
 	if player:
@@ -43,5 +51,4 @@ func shoot():
 		get_parent().add_child(projectile_instance)
 
 func _wait_for_all_projectiles() -> void:
-	print("gojng to aoe")
 	Transitioned.emit(self, 'BossAOE')

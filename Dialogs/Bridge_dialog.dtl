@@ -9,3 +9,4 @@ In order to help you through your journey in the Nigredo, you will be able to ac
 \
 Choose with caution.
 [style name="dialog_style"]
+[signal arg="restore_bridge_finished"]

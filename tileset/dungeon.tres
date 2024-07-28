@@ -1,8 +1,54 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://be2y6o5acfjgj"]
+[gd_resource type="TileSet" load_steps=26 format=3 uid="uid://be2y6o5acfjgj"]
 
 [ext_resource type="Texture2D" uid="uid://b80xalbpfawvo" path="res://assets/tiles/floral-walls.png" id="1_cbhcs"]
+[ext_resource type="Texture2D" uid="uid://dx2wetnjan1gp" path="res://assets/bridge-broken.png" id="1_tq8ft"]
 [ext_resource type="Texture2D" uid="uid://cepu6laac40hc" path="res://assets/tiles/dungeon-floor.png" id="2_035sy"]
+[ext_resource type="Texture2D" uid="uid://dbxfqx3va6cs0" path="res://assets/bridge-complete.png" id="2_hy4wf"]
 [ext_resource type="Texture2D" uid="uid://7vi6ger22er" path="res://assets/tiles/flolar-missing-wall.png" id="3_tyqvl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30wpu"]
+texture = ExtResource("1_tq8ft")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_axwae"]
+texture = ExtResource("2_hy4wf")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_unqr3"]
 polygon = PackedVector2Array(-58.8108, -128, -58.8108, 128, 65.7297, 128, 65.7297, 114.162, 128, 114.162, 128, -65.7297, 72.6487, -72.6487, 51.8919, -100.324, 51.8919, -128)
@@ -152,9 +198,14 @@ texture_region_size = Vector2i(256, 256)
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/next_alternative_id = 2
 0:2/0 = 0
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/1 = 1
+0:2/1/modulate = Color(0, 0, 0, 1)
+0:2/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/1/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6qdid"]
 polygon = PackedVector2Array(-65.7297, -58.8108, 72.6487, -58.8108, 72.6487, 128, -72.6487, 128)
@@ -177,3 +228,5 @@ physics_layer_0/collision_layer = 9
 sources/3 = SubResource("TileSetAtlasSource_rxxon")
 sources/2 = SubResource("TileSetAtlasSource_cp8yx")
 sources/4 = SubResource("TileSetAtlasSource_w3xr8")
+sources/0 = SubResource("TileSetAtlasSource_30wpu")
+sources/1 = SubResource("TileSetAtlasSource_axwae")

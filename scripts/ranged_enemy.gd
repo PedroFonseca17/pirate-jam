@@ -5,17 +5,22 @@ class_name RangedEnemy
 @onready var hit_animation = $HitAnimation
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var projectile = preload("res://scenes/mageProjectile.tscn")
+@onready var health_component = $HealthComponent
+
+
 
 var attack_damage := 10.0
 var knockback_force = 0
 var player_inside := false
 var is_attacking = false
+var isPlayerAlive = true
 signal Enemy_hit
 
 var last_faced_direction := Vector2.RIGHT
 
 func _ready():
 	hitbox_component.Hitbox_hit.connect(on_hit)
+	health_component.playerDeath.connect(onPlayerDeath)
 	_start_shooting_coroutine()
 
 func _physics_process(delta):
@@ -40,23 +45,30 @@ func _start_shooting_coroutine():
 
 func _shooting_sequence() -> void:
 	# Handle animation side
-	
-	await get_tree().create_timer(1.0).timeout # Initial delay before starting the shooting sequence
-	while true:
+	var tree = get_tree()
+	if !tree:
+		return
+	await tree.create_timer(1.0).timeout # Initial delay before starting the shooting sequence
+	while isPlayerAlive:
 		for i in range(5):
+			tree = get_tree()
+			if !tree:
+				return
 			shoot()
-			await get_tree().create_timer(0.2).timeout # Wait 0.5 seconds between each shot
-		await get_tree().create_timer(3.0).timeout # Wait 3 seconds before shooting again
+			await tree.create_timer(0.2).timeout # Wait 0.5 seconds between each shot
+		await tree.create_timer(3.0).timeout # Wait 3 seconds before shooting again
 
 func shoot():
 	var projectile_instance = projectile.instantiate() as MageProjectile
-	var player = get_tree().get_first_node_in_group("Player")
+	var tree = get_tree()
+	if !tree:
+		return
+	var player = tree.get_first_node_in_group("Player")
 	if player:
 		var direction_to_player = (player.global_position - global_position).normalized()
 		last_faced_direction = direction_to_player
 		
 		is_attacking = true
-		print("direction to player", direction_to_player)
 		
 		if abs(velocity.x) > 100:
 			animated_sprite.flip_h = velocity.x > 0
@@ -78,3 +90,6 @@ func shoot():
 
 func _on_animated_sprite_2d_animation_finished():
 	is_attacking = false
+
+func onPlayerDeath():
+	isPlayerAlive = false

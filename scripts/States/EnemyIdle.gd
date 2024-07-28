@@ -29,7 +29,8 @@ func Update(delta: float):
 func Physics_Update(delta: float):
 	if enemy:
 		enemy.velocity = move_direction * move_speed
-		
+	if !player:
+		return
 	var direction = player.global_position - enemy.global_position
 	if direction.length() < vision_range:
 		if enemy.is_in_group("RangedEnemies"):

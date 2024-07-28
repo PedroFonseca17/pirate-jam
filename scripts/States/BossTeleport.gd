@@ -32,7 +32,6 @@ func handleTeleportStart():
 
 func teleport():
 	# Get the CollisionShape2D node
-	print("teleportei no teleport")
 	var collision_shape = teleport_area.get_child(0) as CollisionShape2D
 	# Check if the collision shape is a RectangleShape2D
 	if collision_shape.shape is RectangleShape2D:
@@ -55,7 +54,6 @@ func teleport():
 		animated_sprite.play("appear")
 
 func _on_boss_sprite_animation_finished():
-	print("ainda no teleport", animated_sprite.animation)
 	if animated_sprite.animation == "disappear":
 		print(health_component.health)
 		if health_component.health < health_component.MAX_HEALTH * 0.2:

@@ -177,28 +177,6 @@ layout_mode = 2
 text = "
 "
 
-[node name="Double Shot" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="DoubleShot" type="Label" parent="ColorRect/ColorRect/ShopList/Double Shot"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Double Shot"
-
-[node name="Double Shot Description" type="Label" parent="ColorRect/ColorRect/ShopList/Double Shot"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-text = "By pressing E fires 2 shots"
-
-[node name="Buy Double Shot" type="Button" parent="ColorRect/ColorRect/ShopList/Double Shot"]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-text = "
-"
-
 [node name="Back" type="Button" parent="ColorRect/ColorRect"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 1
@@ -218,5 +196,4 @@ text = "Back"
 [connection signal="pressed" from="ColorRect/ColorRect/ShopList/Dash/Buy dash" to="." method="_on_buy_dash_pressed"]
 [connection signal="pressed" from="ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="." method="_on_buy_shield_pressed"]
 [connection signal="pressed" from="ColorRect/ColorRect/ShopList/Revive/Buy Revive" to="." method="_on_buy_revive_pressed"]
-[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Double Shot/Buy Double Shot" to="." method="_on_buy_double_shot_pressed"]
 [connection signal="pressed" from="ColorRect/ColorRect/Back" to="." method="_on_back_pressed"]
