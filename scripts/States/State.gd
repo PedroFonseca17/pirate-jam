@@ -3,6 +3,11 @@ class_name State
 
 signal Transitioned
 
+var context : SharedContext
+
+func set_context(ctx : SharedContext):
+	context = ctx
+
 func Enter():
 	pass
 	

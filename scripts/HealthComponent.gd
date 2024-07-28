@@ -10,6 +10,7 @@ func _ready():
 
 func damage(attack: Attack):
 	health -=attack.attack_damage
+	print(health)
 	if health <= 0:
 		var parent = get_parent()
 		if get_parent().is_in_group("Player"):
