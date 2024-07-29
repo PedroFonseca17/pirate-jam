@@ -8,6 +8,7 @@ signal targetDeath
 signal playerDeath
 signal brokePlayerShield
 signal playerHit
+var is_player_death = false
 
 func _ready():
 	health = MAX_HEALTH
@@ -44,13 +45,14 @@ func handle_player_damage(attack: Attack):
 	print(health)
 	receiveDamage.emit()
 	if health <= 0:
-		print("player died")
+		if is_player_death:
+			return
 		if GlobalPlayerInfo.revive and !GlobalPlayerInfo.used_revive:
-			print("revied?")
 			health = MAX_HEALTH / 2
 			receiveDamage.emit()
 			GlobalPlayerInfo.switch_used_revive()
 			return
+		is_player_death = true
 		playerDeath.emit()
 		GlobalPlayerInfo.reset_on_start_run()
 		GlobalPlayerInfo.reset_one_time_items()

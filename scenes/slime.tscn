@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cgbl7w3egk2sf"]
+[gd_scene load_steps=53 format=3 uid="uid://cgbl7w3egk2sf"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_yc7aw"]
 [ext_resource type="Texture2D" uid="uid://vrv37plncmn7" path="res://assets/slime-assets/slime-back.png" id="2_tuea6"]
@@ -351,6 +351,42 @@ size = Vector2(72, 71)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5m04"]
 
+[sub_resource type="Animation" id="Animation_4uygc"]
+resource_name = "HIT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.898039, 0.152941, 0, 1), Color(1, 1, 1, 1), Color(0.898039, 0.152941, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1ggyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6w2a4"]
+_data = {
+"HIT": SubResource("Animation_4uygc"),
+"RESET": SubResource("Animation_1ggyt")
+}
+
 [node name="Slime" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_yc7aw")
 
@@ -358,16 +394,16 @@ script = ExtResource("1_yc7aw")
 z_index = 5
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_kn4kv")
-animation = &"death"
+animation = &"front"
 autoplay = "front"
-frame = 8
-frame_progress = 1.0
+frame_progress = 0.157155
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 9.5)
 shape = SubResource("RectangleShape2D_r2rkj")
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_khlax")]
+MAX_HEALTH = 20.0
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 1.2
@@ -393,10 +429,17 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_roglp")
 enemy = NodePath("../..")
+move_speed = 500.0
 
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("10_dy76d")
 health_component = NodePath("../HealthComponent")
+VALUE = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6w2a4")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
