@@ -20,8 +20,6 @@ func _ready():
 	GlobalPlayerInfo.change_currency.connect(on_change_currency)
 
 func activate_icons():
-	if !GlobalPlayerInfo.double_shot:
-		double_shoot.hide()
 	if !GlobalPlayerInfo.double_dash:
 		double_dash.hide()
 	if !GlobalPlayerInfo.revive:
