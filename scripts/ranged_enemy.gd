@@ -6,10 +6,9 @@ class_name RangedEnemy
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var projectile = preload("res://scenes/mageProjectile.tscn")
 @onready var health_component = $HealthComponent
+@onready var collision_shape_2d = $CollisionShape2D
 
-
-
-var attack_damage := 10.0
+@export var attack_damage := 10.0
 var knockback_force = 0
 var player_inside := false
 var is_attacking = false
@@ -42,6 +41,8 @@ func _physics_process(delta):
 
 func on_hit():
 	Enemy_hit.emit()
+	hit_animation.play("RESET")
+	hit_animation.play("HIT")
 
 func _start_shooting_coroutine():
 	# Start the coroutine for shooting projectiles
@@ -110,4 +111,6 @@ func onPlayerDeath():
 func on_death():
 	if !isDying:
 		isDying = true
+		collision_layer = 0 
+		collision_shape_2d.disabled = true
 		animated_sprite.play("death")

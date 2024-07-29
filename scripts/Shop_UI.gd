@@ -8,11 +8,10 @@ extends Control
 @onready var revive_button: Button = $"ColorRect/ColorRect/ShopList/Revive/Buy Revive"
 @onready var more_currency_button: Button = $"ColorRect/ColorRect/ShopList/more_currency/Buy more_currency"
 
-var dash_price: int = 100
-var shield_price: int = 200
-var revive_price: int = 500
-var double_shot_price: int = 250
-var more_currency: int = 200
+var dash_price: int = 300
+var shield_price: int = 250
+var revive_price: int = 600
+var more_currency: int = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

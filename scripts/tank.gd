@@ -7,8 +7,9 @@ class_name Enemy
 @onready var attack_timer = $AttackTimer # Timer for delay before attack
 @onready var attack_cool_down_timer = $AttackCoolDownTimer # Timer for cooldown between attacks
 @onready var health_component = $HealthComponent
+@onready var collision_shape_2d = $CollisionShape2D
 
-var attack_damage := 10.0
+@export var attack_damage := 15.0
 var knockback_force = 0
 var player_inside := false
 var is_attacking := false
@@ -35,6 +36,8 @@ func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, 100 * delta) # Adjust the drag as needed
 
 func _on_hitbox_component_body_entered(body):
+	if isDying:
+		return
 	if body.is_in_group("Player"):
 		player_inside = true
 		var overlapping_bodies = $HitboxComponent.get_overlapping_bodies()
@@ -44,6 +47,8 @@ func _on_hitbox_component_body_entered(body):
 				break  # Stop after finding the first player
 
 func _on_hitbox_component_body_exited(body):
+	if isDying:
+		return
 	if body.is_in_group("Player"):
 		player_inside = false
 		attack_timer.stop()  # Stop the attack delay timer
@@ -51,6 +56,8 @@ func _on_hitbox_component_body_exited(body):
 		is_attacking = false  # Reset attacking state
 
 func start_attack():
+	if isDying:
+		return
 	if !is_attacking:
 		if abs(velocity.x) > 100:
 			animated_sprite.flip_h = velocity.x > 0
@@ -63,6 +70,8 @@ func start_attack():
 		attack_timer.start(0.3) # Start the timer to delay the actual attack
 
 func _on_attack_timer_timeout():
+	if isDying:
+		return
 	if player_inside:
 		print('player inside')
 		var overlapping_bodies = $HitboxComponent.get_overlapping_bodies()
@@ -76,12 +85,16 @@ func _on_attack_timer_timeout():
 		is_attacking = false
 
 func _on_attack_cool_down_timer_timeout():
+	if isDying:
+		return
 	if player_inside:
 		start_attack() # Restart attack sequence if player is still inside
 	else:
 		is_attacking = false
 
 func attack(player: Player):
+	if isDying:
+		return
 	var current_attack = Attack.new()
 	current_attack.attack_damage = attack_damage
 	current_attack.knockback_force = knockback_force
@@ -96,6 +109,7 @@ func attack(player: Player):
 
 func on_hit():
 	Enemy_hit.emit()
+	hit_animation.play("RESET")
 	hit_animation.play("hit2")
 
 func _on_animated_sprite_2d_animation_finished():
@@ -107,5 +121,7 @@ func _on_animated_sprite_2d_animation_finished():
 func on_death():
 	if !isDying:
 		isDying = true
+		collision_layer = 0 
+		collision_shape_2d.disabled = true
 		animated_sprite.scale = Vector2(1.2, 1.2)
 		animated_sprite.play("death")

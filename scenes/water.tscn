@@ -25,11 +25,11 @@ noise = SubResource("FastNoiseLite_q178i")
 shader = ExtResource("1_nftb3")
 shader_parameter/scroll1 = Vector2(0.05, 0.05)
 shader_parameter/scroll2 = Vector2(-0.05, -0.05)
-shader_parameter/distortion_strength = 0.2
-shader_parameter/tone_color = Color(0.176647, 0.538497, 0.663105, 1)
+shader_parameter/distortion_strength = 0.01
+shader_parameter/tone_color = Color(0.176471, 0.537255, 0.662745, 1)
 shader_parameter/top_color = Color(1, 1, 1, 1)
-shader_parameter/light_start = 0.27
-shader_parameter/light_end = 0.874
+shader_parameter/light_start = 0.078
+shader_parameter/light_end = 0.75
 shader_parameter/noise1 = SubResource("NoiseTexture2D_n3y82")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_7q7iy")
 

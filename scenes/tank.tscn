@@ -580,10 +580,10 @@ script = ExtResource("1_f0xuw")
 position = Vector2(2, -20)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ai57u")
-animation = &"death"
+animation = &"front"
 autoplay = "front"
-frame = 8
-frame_progress = 1.0
+frame = 7
+frame_progress = 0.485175
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -9)
@@ -592,7 +592,7 @@ shape = SubResource("RectangleShape2D_6xl8i")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_f1iw1")]
 visible = false
-MAX_HEALTH = 30.0
+MAX_HEALTH = 80.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "body") instance=ExtResource("4_lpcpn")]
 position = Vector2(1, 2)
@@ -626,6 +626,7 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_6bvxx")
 enemy = NodePath("../..")
+move_speed = 300.0
 
 [node name="HitAnimation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -635,6 +636,7 @@ libraries = {
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("13_td6p0")
 health_component = NodePath("../HealthComponent")
+VALUE = 20.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

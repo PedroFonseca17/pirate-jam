@@ -552,7 +552,7 @@ z_index = 5
 script = ExtResource("1_vm42c")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_mlutj")]
-MAX_HEALTH = 20.0
+MAX_HEALTH = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1publ")
@@ -584,10 +584,12 @@ enemy = NodePath("../..")
 [node name="RangeAttack" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_ggohs")
 enemy = NodePath("../..")
+move_speed = 500.0
 
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("13_m0rmp")
 health_component = NodePath("../HealthComponent")
+VALUE = 15.0
 
 [node name="HitAnimation" type="AnimationPlayer" parent="."]
 libraries = {

@@ -661,7 +661,7 @@ animations = [{
 radius = 70.2959
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nwbq"]
-size = Vector2(30.7927, 66.8182)
+size = Vector2(30.7927, 33.052)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xgxug"]
 size = Vector2(100, 24)
@@ -719,7 +719,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-z_index = 5
+z_index = 20
 script = ExtResource("1_3ncmx")
 
 [node name="arrow" type="Sprite2D" parent="."]
@@ -731,10 +731,7 @@ texture = ExtResource("19_capqx")
 position = Vector2(-1, -22)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_1byn6")
-animation = &"death"
-autoplay = "idle_down"
-frame = 7
-frame_progress = 1.0
+animation = &"idle_down"
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -756,7 +753,7 @@ shape = SubResource("CircleShape2D_38ya4")
 debug_color = Color(0.911566, 0.0745995, 0.695638, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -23.1)
+position = Vector2(-1.5, 28.9)
 scale = Vector2(3.28, 3.08)
 shape = SubResource("RectangleShape2D_0nwbq")
 

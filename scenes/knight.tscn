@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://njhpriw650xb"]
+[gd_scene load_steps=68 format=3 uid="uid://njhpriw650xb"]
 
 [ext_resource type="Script" path="res://scripts/knight.gd" id="1_jygon"]
 [ext_resource type="Texture2D" uid="uid://d4enbvblkapj8" path="res://assets/normal-assets/normal-back.png" id="2_iot3h"]
@@ -481,6 +481,42 @@ size = Vector2(133.5, 208.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_wegyx"]
 radius = 137.091
 
+[sub_resource type="Animation" id="Animation_v5bw7"]
+resource_name = "HIT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.795688, 0.243837, 0.328008, 1), Color(1, 1, 1, 1), Color(0.796078, 0.243137, 0.329412, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_urki8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m5ngd"]
+_data = {
+"HIT": SubResource("Animation_v5bw7"),
+"RESET": SubResource("Animation_urki8")
+}
+
 [node name="Knight" type="CharacterBody2D" groups=["Enemies"]]
 z_index = 10
 collision_layer = 3
@@ -490,10 +526,9 @@ script = ExtResource("1_jygon")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_w5flb")
-animation = &"death"
+animation = &"front"
 autoplay = "front"
-frame = 8
-frame_progress = 1.0
+frame_progress = 0.417781
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.75, -0.75)
@@ -510,6 +545,7 @@ shape = SubResource("CircleShape2D_wegyx")
 debug_color = Color(0.959513, 0, 0.521209, 0.42)
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_588dq")]
+MAX_HEALTH = 40.0
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 1.2
@@ -526,12 +562,18 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("9_ufl4q")
 enemy = NodePath("../..")
+move_speed = 500.0
 
 [node name="AttackCoolDownTimer" type="Timer" parent="."]
 
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("13_ybvg2")
 health_component = NodePath("../HealthComponent")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m5ngd")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

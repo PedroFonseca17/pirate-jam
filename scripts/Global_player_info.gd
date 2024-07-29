@@ -2,8 +2,8 @@ extends Node
 
 #Switches that conbtrol powerups
 var double_dash: bool = false
-var shield: bool = true
-var revive: bool = true
+var shield: bool = false
+var revive: bool = false
 var pill: bool = false
 var more_currency: bool = false
 var is_in_textbox_scene = false
@@ -16,7 +16,7 @@ signal revive_used
 var currency: int = 0
 signal change_currency
 
-var intro_scene: bool = false # TODO: put to true
+var intro_scene: bool = true # TODO: put to true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -78,6 +78,8 @@ func reset_on_change_level():
 func reset_on_start_run():
 	used_shield = false
 	used_revive = false
+	player_health = null
+	
 	
 func reset_one_time_items():
 	pill = false

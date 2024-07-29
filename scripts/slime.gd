@@ -10,9 +10,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var hitbox_component = $HitboxComponent
 signal Enemy_hit
 @onready var health_component = $HealthComponent
+@onready var collision_shape_2d = $CollisionShape2D
+@onready var animation_player = $AnimationPlayer
 
 
-var attack_damage := 10.0
+@export var attack_damage := 5.0
 var knockback_force = 0
 var player_inside := false
 var isDying = false
@@ -37,6 +39,8 @@ func _physics_process(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, 100 * delta) # Adjust the drag as needed
 
 func _on_hitbox_component_body_entered(body):
+	if isDying:
+		return
 	if body.is_in_group("Player"):
 		player_inside = true
 		var overlapping_bodies = $HitboxComponent.get_overlapping_bodies()
@@ -47,11 +51,15 @@ func _on_hitbox_component_body_entered(body):
 				break  # Stop after finding the first player
 
 func _on_hitbox_component_body_exited(body):
+	if isDying:
+		return
 	if body.is_in_group("Player"):
 		player_inside = false
 		$AttackTimer.stop()  # Stop the timer to stop attacking
 
 func _on_attack_timer_timeout():
+	if isDying:
+		return
 	if player_inside:
 		var overlapping_bodies = $HitboxComponent.get_overlapping_bodies()
 		for body in overlapping_bodies:
@@ -62,6 +70,8 @@ func _on_attack_timer_timeout():
 
 
 func attack(player: Player):
+	if isDying:
+		return
 	var current_attack = Attack.new()
 	current_attack.attack_damage = attack_damage
 	current_attack.knockback_force = knockback_force
@@ -76,9 +86,13 @@ func attack(player: Player):
 
 func on_hit():
 	Enemy_hit.emit()
+	animation_player.play("RESET")
+	animation_player.play("HIT")
 
 func on_death():
 	if !isDying:
+		collision_shape_2d.disabled = true
+		collision_layer = 0 
 		isDying = true
 		animated_sprite.play("death")
 

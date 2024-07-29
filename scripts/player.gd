@@ -12,6 +12,7 @@ var current_state = State.IDLE
 var last_direction_change_time = 0.0
 
 @export var speed: int = 750
+@export var attack_damage = 10
 @onready var animations = $AnimatedSprite2D
 @onready var dash_cooldown_timer = $DashCooldownTimer
 @onready var projectile = preload("res://scenes/projectile.tscn")
@@ -21,9 +22,12 @@ var last_direction_change_time = 0.0
 @onready var animation_player = $AnimationPlayer
 @onready var shoot_cooldown_timer = $ShootCooldownTimer
 @onready var arrow_sprite = $arrow
+@onready var hit_shound = $hitShound
+
+
 
 # Dash properties
-const dash_speed = 2250.0
+const dash_speed = 1500.0
 var dash_time_left = 0.5  # Duration of the dash
 var last_faced_direction = Vector2.RIGHT
 var last_faced_shot = Vector2.RIGHT
@@ -33,7 +37,7 @@ var dash_direction = Vector2.ZERO
 var dash_count = 0  # Track the number of consecutive dashes
 
 # Attack variables
-var attack_damage = 5
+
 var isAttackingAnimation = false
 var is_player_dying = false
 
@@ -41,6 +45,7 @@ func _ready():
 	health_component.playerHit.connect(on_hit)
 	dash_cooldown_timer.wait_time = 1.0
 	set_state(State.IDLE)
+	animation_player.autoplay = "idle_down"
 	health_component.playerDeath.connect(_on_player_death)
 	health_component.brokePlayerShield.connect(_on_shield_break)
 	if GlobalPlayerInfo.player_health:
@@ -172,7 +177,7 @@ func shoot():
 	projectile_instance.attack_damage = attack_damage
 	projectile_instance.knockback_force = 50
 	get_parent().add_child(projectile_instance)
-	shoot_cooldown_timer.start(0.3)  # Start the cooldown timer for shooting
+	shoot_cooldown_timer.start(0.6)  # Start the cooldown timer for shooting
 
 func update_arrow_direction():
 	var player_size = Vector2(256, 256)
@@ -264,6 +269,7 @@ func on_hit():
 		return
 	animation_player.play("RESET")
 	animation_player.play("HIT")
+	hit_shound.play()
 	
 func _on_player_death():
 	if !is_player_dying:
