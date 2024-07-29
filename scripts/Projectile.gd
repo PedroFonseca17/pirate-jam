@@ -33,5 +33,5 @@ func _on_area_2d_area_entered(area: Area2D):
 		area.damage(attack)
 		queue_free()
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	queue_free()
