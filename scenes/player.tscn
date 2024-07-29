@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://drt1incjfm4cv"]
+[gd_scene load_steps=105 format=3 uid="uid://drt1incjfm4cv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3ncmx"]
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="3_6p7dp"]
@@ -663,6 +663,9 @@ radius = 70.2959
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nwbq"]
 size = Vector2(30.7927, 66.8182)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgxug"]
+size = Vector2(100, 24)
+
 [sub_resource type="Animation" id="Animation_n4u4b"]
 resource_name = "HIT"
 tracks/0/type = "value"
@@ -756,6 +759,11 @@ debug_color = Color(0.911566, 0.0745995, 0.695638, 0.42)
 position = Vector2(-1.5, -23.1)
 scale = Vector2(3.28, 3.08)
 shape = SubResource("RectangleShape2D_0nwbq")
+
+[node name="TrapColision" type="CollisionShape2D" parent="." groups=["Trap"]]
+position = Vector2(-2, 69)
+shape = SubResource("RectangleShape2D_xgxug")
+debug_color = Color(0.650784, 0.519119, 0.0301039, 0.42)
 
 [node name="shadow" type="PointLight2D" parent="."]
 range_item_cull_mask = 32

@@ -1,10 +1,15 @@
-[gd_resource type="TileSet" load_steps=26 format=3 uid="uid://be2y6o5acfjgj"]
+[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://be2y6o5acfjgj"]
 
 [ext_resource type="Texture2D" uid="uid://b80xalbpfawvo" path="res://assets/tiles/floral-walls.png" id="1_cbhcs"]
 [ext_resource type="Texture2D" uid="uid://dx2wetnjan1gp" path="res://assets/bridge-broken.png" id="1_tq8ft"]
 [ext_resource type="Texture2D" uid="uid://cepu6laac40hc" path="res://assets/tiles/dungeon-floor.png" id="2_035sy"]
 [ext_resource type="Texture2D" uid="uid://dbxfqx3va6cs0" path="res://assets/bridge-complete.png" id="2_hy4wf"]
 [ext_resource type="Texture2D" uid="uid://7vi6ger22er" path="res://assets/tiles/flolar-missing-wall.png" id="3_tyqvl"]
+[ext_resource type="PackedScene" uid="uid://cglr6som520r" path="res://scenes/trap.tscn" id="6_s2gsc"]
+[ext_resource type="PackedScene" uid="uid://bxqmlcmxf5p5k" path="res://scenes/tank.tscn" id="7_ws34r"]
+[ext_resource type="PackedScene" uid="uid://cgbl7w3egk2sf" path="res://scenes/slime.tscn" id="8_dbp61"]
+[ext_resource type="PackedScene" uid="uid://njhpriw650xb" path="res://scenes/knight.tscn" id="9_42sw2"]
+[ext_resource type="PackedScene" uid="uid://hntg0kxckryy" path="res://scenes/ranged_enemy.tscn" id="10_ma2u0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_30wpu"]
 texture = ExtResource("1_tq8ft")
@@ -219,6 +224,13 @@ texture_region_size = Vector2i(256, 256)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(65.7297, -51.8919, 65.7297, 128, -65.7297, 128, -65.7297, -51.8919)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_njf1t"]
+scenes/1/scene = ExtResource("6_s2gsc")
+scenes/2/scene = ExtResource("7_ws34r")
+scenes/3/scene = ExtResource("8_dbp61")
+scenes/4/scene = ExtResource("9_42sw2")
+scenes/5/scene = ExtResource("10_ma2u0")
+
 [resource]
 tile_size = Vector2i(256, 256)
 uv_clipping = true
@@ -230,3 +242,4 @@ sources/2 = SubResource("TileSetAtlasSource_cp8yx")
 sources/4 = SubResource("TileSetAtlasSource_w3xr8")
 sources/0 = SubResource("TileSetAtlasSource_30wpu")
 sources/1 = SubResource("TileSetAtlasSource_axwae")
+sources/5 = SubResource("TileSetScenesCollectionSource_njf1t")

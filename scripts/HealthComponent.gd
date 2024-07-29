@@ -48,6 +48,7 @@ func handle_player_damage(attack: Attack):
 		if GlobalPlayerInfo.revive and !GlobalPlayerInfo.used_revive:
 			print("revied?")
 			health = MAX_HEALTH / 2
+			receiveDamage.emit()
 			GlobalPlayerInfo.switch_used_revive()
 			return
 		playerDeath.emit()
