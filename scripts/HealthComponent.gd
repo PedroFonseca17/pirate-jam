@@ -20,6 +20,8 @@ func damage(attack: Attack):
 		handle_player_damage(attack)
 	else:
 		health -= attack.attack_damage
+		if (parent.is_in_group("Boss")):
+			receiveDamage.emit()
 		print(health)
 		if health <= 0:
 			targetDeath.emit()
@@ -46,6 +48,7 @@ func handle_player_damage(attack: Attack):
 		if GlobalPlayerInfo.revive and !GlobalPlayerInfo.used_revive:
 			print("revied?")
 			health = MAX_HEALTH / 2
+			receiveDamage.emit()
 			GlobalPlayerInfo.switch_used_revive()
 			return
 		playerDeath.emit()

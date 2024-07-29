@@ -14,9 +14,14 @@ anchors_preset = 0
 script = ExtResource("1_e7jeh")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.5
 offset_right = 360.0
-offset_bottom = 41.0
+offset_bottom = 20.5
+grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_4e6ud")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ybo5t")
 value = 50.0
