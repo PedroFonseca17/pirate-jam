@@ -14,6 +14,7 @@ var knockback_force = 0
 var player_inside := false
 var is_attacking = false
 var isPlayerAlive = true
+var isDying = false
 signal Enemy_hit
 
 var last_faced_direction := Vector2.RIGHT
@@ -21,9 +22,12 @@ var last_faced_direction := Vector2.RIGHT
 func _ready():
 	hitbox_component.Hitbox_hit.connect(on_hit)
 	health_component.playerDeath.connect(onPlayerDeath)
+	health_component.targetDeath.connect(on_death)
 	_start_shooting_coroutine()
 
 func _physics_process(delta):
+	if isDying:
+		return
 	# Apply movement logic here
 	move_and_collide(velocity * delta)
 	if abs(velocity.x) > 100 and !is_attacking:
@@ -48,11 +52,15 @@ func _shooting_sequence() -> void:
 	var tree = get_tree()
 	if !tree:
 		return
+	if isDying:
+		return
 	await tree.create_timer(1.0).timeout # Initial delay before starting the shooting sequence
 	while isPlayerAlive:
 		for i in range(5):
 			tree = get_tree()
 			if !tree:
+				return
+			if isDying:
 				return
 			shoot()
 			await tree.create_timer(0.2).timeout # Wait 0.5 seconds between each shot
@@ -62,6 +70,8 @@ func shoot():
 	var projectile_instance = projectile.instantiate() as MageProjectile
 	var tree = get_tree()
 	if !tree:
+		return
+	if isDying:
 		return
 	var player = tree.get_first_node_in_group("Player")
 	if player:
@@ -89,7 +99,15 @@ func shoot():
 
 
 func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite.animation == "death":
+		queue_free()
+		return
 	is_attacking = false
 
 func onPlayerDeath():
 	isPlayerAlive = false
+
+func on_death():
+	if !isDying:
+		isDying = true
+		animated_sprite.play("death")

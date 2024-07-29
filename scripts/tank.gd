@@ -6,17 +6,22 @@ class_name Enemy
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var attack_timer = $AttackTimer # Timer for delay before attack
 @onready var attack_cool_down_timer = $AttackCoolDownTimer # Timer for cooldown between attacks
+@onready var health_component = $HealthComponent
 
 var attack_damage := 10.0
 var knockback_force = 0
 var player_inside := false
 var is_attacking := false
+var isDying = false
 signal Enemy_hit
 
 func _ready():
 	hitbox_component.Hitbox_hit.connect(on_hit)
+	health_component.targetDeath.connect(on_death)
 
 func _physics_process(delta):
+	if isDying:
+		return
 	# Apply movement logic here
 	move_and_collide(velocity * delta)
 	if abs(velocity.x) > 100 and !is_attacking:
@@ -77,14 +82,14 @@ func _on_attack_cool_down_timer_timeout():
 		is_attacking = false
 
 func attack(player: Player):
-	var attack = Attack.new()
-	attack.attack_damage = attack_damage
-	attack.knockback_force = knockback_force
-	attack.attack_position = self.global_position
+	var current_attack = Attack.new()
+	current_attack.attack_damage = attack_damage
+	current_attack.knockback_force = knockback_force
+	current_attack.attack_position = self.global_position
 
 	var hitboxComponent: HitboxComponent = player.get_node("HitboxComponent")
 	if hitboxComponent:
-		hitboxComponent.damage(attack)
+		hitboxComponent.damage(current_attack)
 	else:
 		print("Player does not have a HealthComponent")
 	
@@ -94,4 +99,13 @@ func on_hit():
 	hit_animation.play("hit2")
 
 func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite.animation == "death":
+		queue_free()
+		return
 	is_attacking = false
+
+func on_death():
+	if !isDying:
+		isDying = true
+		animated_sprite.scale = Vector2(1.2, 1.2)
+		animated_sprite.play("death")

@@ -23,7 +23,7 @@ func damage(attack: Attack):
 		print(health)
 		if health <= 0:
 			targetDeath.emit()
-			get_parent().queue_free()
+		#	get_parent().queue_free()
 
 func set_health(current_health: float):
 	health = current_health

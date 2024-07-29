@@ -10,7 +10,7 @@ func Enter():
 	player = get_tree().get_first_node_in_group("Player")
 	
 
-func Physics_Update(delta: float):
+func Physics_Update(_delta: float):
 	var direction = player.global_position - enemy.global_position
 	# This is the space between the enemy and the player
 	if direction.length() > 10:

@@ -17,7 +17,6 @@ var last_direction_change_time = 0.0
 @onready var projectile = preload("res://scenes/projectile.tscn")
 @onready var hitbox_component = $HitboxComponent
 @onready var shoot_sound = $shootSound
-@onready var hit_sound = $hitSound
 @onready var health_component = $HealthComponent
 @onready var animation_player = $AnimationPlayer
 @onready var shoot_cooldown_timer = $ShootCooldownTimer
