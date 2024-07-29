@@ -53,9 +53,9 @@ func _on_buy_more_currency_pressed():
 	if (GlobalPlayerInfo.currency >= more_currency):
 		handle_button_press(more_currency, "switch_more_currency",more_currency_button)
 
-func handle_button_press(currency: int,switchFn: String ,button: Button):
+func handle_button_press(price: int,switchFn: String ,button: Button):
 	GlobalPlayerInfo.call(switchFn)
-	GlobalPlayerInfo.remove_currency(currency)
+	GlobalPlayerInfo.remove_currency(price)
 	refresh_currency()
 	button.text = "Owned"
 	button.disabled = true
