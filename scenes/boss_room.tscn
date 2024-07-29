@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3jrchbo05kpd"]
+[gd_scene load_steps=12 format=3 uid="uid://b3jrchbo05kpd"]
 
 [ext_resource type="TileSet" uid="uid://be2y6o5acfjgj" path="res://tileset/dungeon.tres" id="1_7yacd"]
 [ext_resource type="PackedScene" uid="uid://bw6460lf2dihx" path="res://scenes/boss.tscn" id="2_so3ao"]
 [ext_resource type="PackedScene" uid="uid://drt1incjfm4cv" path="res://scenes/player.tscn" id="3_gi0kq"]
+[ext_resource type="PackedScene" uid="uid://cvhgbelhkywan" path="res://scenes/ui_overlay.tscn" id="4_n7jan"]
 [ext_resource type="PackedScene" uid="uid://hpp632fic4p8" path="res://scenes/fire.tscn" id="5_x25u5"]
 [ext_resource type="AudioStream" uid="uid://mdybmllvi727" path="res://assets/audio/ghost-walk-127743.mp3" id="6_ncr1w"]
 [ext_resource type="PackedScene" uid="uid://cturi58ghqqj6" path="res://scenes/aoe.tscn" id="6_u5qdi"]
@@ -29,7 +30,7 @@ layer_1/name = "walls"
 layer_1/z_index = 3
 layer_1/tile_data = PackedInt32Array(-65536, 65538, 1, -65535, 131074, 1, -65534, 131074, 1, -65533, 131074, 1, -65532, 131074, 1, -65531, 131074, 1, -65530, 131074, 1, -65529, 131074, 1, -65528, 131074, 1, -65527, 131074, 1, -65526, 131074, 1, -65525, 131074, 1, -589823, 131074, 1, -589822, 131074, 1, -589821, 131074, 1, -589820, 131074, 1, -589819, 131074, 1, -589818, 131074, 1, -589817, 131074, 1, -589816, 131074, 1, -589815, 131074, 1, -589814, 131074, 1, -589813, 131074, 1, -524276, 2, 1, -458740, 2, 1, -393204, 2, 1, -327668, 2, 1, -262132, 2, 1, -196596, 2, 1, -131060, 2, 1, -524288, 2, 1, -458752, 2, 1, -393216, 2, 1, -327680, 2, 1, -262144, 2, 1, -196608, 2, 1, -131072, 2, 1, -589824, 131074, 0, -589812, 131074, 65536, -65524, 65538, 65537)
 
-[node name="Boss" parent="." instance=ExtResource("2_so3ao")]
+[node name="Boss" parent="." groups=["Boss"] instance=ExtResource("2_so3ao")]
 position = Vector2(1688, -1514)
 
 [node name="Player" parent="." instance=ExtResource("3_gi0kq")]
@@ -38,6 +39,10 @@ position = Vector2(1700, -600)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
 limit_bottom = 0
+
+[node name="UI_overlay" parent="Player/Camera2D" node_paths=PackedStringArray("body", "boss") instance=ExtResource("4_n7jan")]
+body = NodePath("../..")
+boss = NodePath("../../../Boss")
 
 [node name="TeleportArea" type="Area2D" parent="."]
 position = Vector2(1676, -1162)

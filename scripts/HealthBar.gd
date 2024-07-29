@@ -1,6 +1,8 @@
 extends Node
 
 @export var body: CharacterBody2D
+@export var x: int
+@export var y: int
 
 @onready var progress_bar = $ProgressBar
 
@@ -16,7 +18,8 @@ func _ready():
 		else:
 			progress_bar.value = healthComponent.health
 		healthComponent.receiveDamage.connect(on_receive_damage)
-
+	if x != 0 && y != 0:
+		progress_bar.set_size(Vector2(x,y))
 func set_body(recieved_body: CharacterBody2D):
 	body = recieved_body
 	_ready()

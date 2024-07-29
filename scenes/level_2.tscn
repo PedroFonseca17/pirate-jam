@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://drt1incjfm4cv" path="res://scenes/player.tscn" id="2_e6ttb"]
 [ext_resource type="Texture2D" uid="uid://dkv7u3xeyfgyj" path="res://assets/tiles/tree.png" id="2_p8aox"]
 [ext_resource type="Texture2D" uid="uid://bw25lagbtg02" path="res://assets/tiles/stone.png" id="3_qmtni"]
-[ext_resource type="PackedScene" uid="uid://dxqydnkydkex2" path="res://scenes/water.tscn" id="4_32t5a"]
+[ext_resource type="PackedScene" path="res://scenes/water.tscn" id="4_32t5a"]
 [ext_resource type="Texture2D" uid="uid://k6bdj1p70dnn" path="res://assets/tiles/open-floor.png" id="4_by7sr"]
 [ext_resource type="PackedScene" uid="uid://cvhgbelhkywan" path="res://scenes/ui_overlay.tscn" id="6_3jrwl"]
 [ext_resource type="PackedScene" uid="uid://bxqmlcmxf5p5k" path="res://scenes/tank.tscn" id="7_68wd3"]

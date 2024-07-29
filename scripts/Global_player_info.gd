@@ -2,14 +2,16 @@ extends Node
 
 #Switches that conbtrol powerups
 var double_dash: bool = false
-var shield: bool = false
-var revive: bool = false
+var shield: bool = true
+var revive: bool = true
 var pill: bool = false
 var more_currency: bool = false
 var is_in_textbox_scene = false
 var player_health = null
 var used_shield = false
 var used_revive = false
+signal shield_used
+signal revive_used
 
 var currency: int = 0
 signal change_currency
@@ -64,9 +66,11 @@ func switch_pill():
 
 func switch_used_shield():
 	used_shield = !used_shield
+	shield_used.emit()
 
 func switch_used_revive():
 	used_revive = !used_revive
+	revive_used.emit()
 
 func reset_on_change_level():
 	used_shield = false

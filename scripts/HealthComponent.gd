@@ -20,6 +20,8 @@ func damage(attack: Attack):
 		handle_player_damage(attack)
 	else:
 		health -= attack.attack_damage
+		if (parent.is_in_group("Boss")):
+			receiveDamage.emit()
 		print(health)
 		if health <= 0:
 			targetDeath.emit()
