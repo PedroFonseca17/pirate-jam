@@ -37,6 +37,6 @@ func initialize_scenes():
 
 
 # Scene manager
-func switch_scene_with_clean_up(scene_name: StringName, cur_scene: Node):
+func switch_scene_with_clean_up(scene_name: StringName, _cur_scene: Node):
 	var scene = load(scenes[scene_map[scene_name]])
 	get_tree().change_scene_to_packed(scene)

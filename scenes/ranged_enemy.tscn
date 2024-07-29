@@ -1,9 +1,10 @@
-[gd_scene load_steps=62 format=3 uid="uid://hntg0kxckryy"]
+[gd_scene load_steps=71 format=3 uid="uid://hntg0kxckryy"]
 
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="1_mlutj"]
 [ext_resource type="Script" path="res://scripts/ranged_enemy.gd" id="1_vm42c"]
 [ext_resource type="Texture2D" uid="uid://datcng5n7lkt1" path="res://assets/mage-assets/mage-back.png" id="3_yeo0i"]
 [ext_resource type="Texture2D" uid="uid://70tdxk4de63q" path="res://assets/mage-assets/mage-back-attack.png" id="4_gi8uv"]
+[ext_resource type="Texture2D" uid="uid://cfmiu5mcrri0t" path="res://assets/monsters_die.png" id="5_d4sl4"]
 [ext_resource type="Texture2D" uid="uid://c7jb511h4sulr" path="res://assets/mage-assets/mage-front.png" id="5_u2tr8"]
 [ext_resource type="PackedScene" uid="uid://c8nuyfj6l50ju" path="res://scenes/hitbox_component.tscn" id="5_ymqyy"]
 [ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="6_m373w"]
@@ -69,6 +70,38 @@ region = Rect2(768, 0, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8l5vw"]
 atlas = ExtResource("4_gi8uv")
 region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik20y"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsx7s"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogrxk"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12v1o"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia0mg"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwy2p"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw52b"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmhc2"]
+atlas = ExtResource("5_d4sl4")
+region = Rect2(1792, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3mc1j"]
 atlas = ExtResource("5_u2tr8")
@@ -267,6 +300,38 @@ animations = [{
 }],
 "loop": false,
 "name": &"back_attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik20y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsx7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogrxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12v1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia0mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwy2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw52b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmhc2")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"death",
 "speed": 10.0
 }, {
 "frames": [{
@@ -491,8 +556,10 @@ MAX_HEALTH = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1publ")
-animation = &"side"
+animation = &"death"
 autoplay = "front"
+frame = 5
+frame_progress = 0.0169039
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, -4)
@@ -521,7 +588,6 @@ enemy = NodePath("../..")
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("13_m0rmp")
 health_component = NodePath("../HealthComponent")
-VALUE = 120.0
 
 [node name="HitAnimation" type="AnimationPlayer" parent="."]
 libraries = {

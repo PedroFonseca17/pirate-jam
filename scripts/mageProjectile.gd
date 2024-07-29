@@ -16,8 +16,8 @@ func _ready():
 
 func _physics_process(delta):
 	# Move the projectile in the direction it was set to
-	var velocity = dir * SPEED
-	position += velocity * delta
+	var current_velocity = dir * SPEED
+	position += current_velocity * delta
 
 func _on_life_timeout():
 	queue_free()
@@ -32,5 +32,5 @@ func _on_area_2d_area_entered(area: Area2D):
 		area.damage(attack)
 		queue_free()
 
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	queue_free()
