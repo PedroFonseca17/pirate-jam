@@ -36,6 +36,7 @@ var dash_count = 0  # Track the number of consecutive dashes
 # Attack variables
 var attack_damage = 5
 var isAttackingAnimation = false
+var is_player_dying = false
 
 func _ready():
 	health_component.playerHit.connect(on_hit)
@@ -47,6 +48,9 @@ func _ready():
 		health_component.set_health(GlobalPlayerInfo.player_health)
 
 func _physics_process(delta):
+	if is_player_dying:
+		return
+	
 	if GlobalPlayerInfo.is_in_textbox_scene:
 		if last_faced_direction.x != 0:
 			animations.flip_h = last_faced_direction.x > 0
@@ -246,6 +250,9 @@ func set_state(new_state):
 	updateAnimation()
 
 func _on_animated_sprite_2d_animation_finished():
+	if animations.animation == "death":
+		SceneTransition.change_scene("Hub_scene", self)
+	
 	if current_state == State.START_MOVE:
 		set_state(State.LOOP_MOVE)
 	elif current_state == State.STOP_MOVE:
@@ -254,11 +261,15 @@ func _on_animated_sprite_2d_animation_finished():
 	isAttackingAnimation = false
 
 func on_hit():
+	if is_player_dying:
+		return
 	animation_player.play("RESET")
 	animation_player.play("HIT")
 	
 func _on_player_death():
-	SceneTransition.change_scene("Hub_scene", self)
+	if !is_player_dying:
+		animations.play("death")
+	is_player_dying = true
 
 
 func _on_dash_cooldown_timer_timeout():
