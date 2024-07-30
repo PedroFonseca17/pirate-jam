@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://bueyi37se02e7"]
+[gd_scene load_steps=10 format=3 uid="uid://bueyi37se02e7"]
 
 [ext_resource type="Script" path="res://scripts/shop_UI.gd" id="1_a0u0i"]
-[ext_resource type="Texture2D" uid="uid://dw34syw01iyj1" path="res://assets/sabina.png" id="1_gt7wv"]
+[ext_resource type="Texture2D" uid="uid://q6i7dutj8u2q" path="res://assets/Funso_sem_Sabina.png" id="2_mgdkx"]
+[ext_resource type="Texture2D" uid="uid://uywcdtmvjw7" path="res://assets/player-assets/front-idle.png" id="3_5fxbb"]
 [ext_resource type="Texture2D" uid="uid://cv6simtc55qel" path="res://assets/currency_nb.png" id="3_l08px"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owpo6"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ximpi"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vawl"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neybx"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d8bmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owpo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ximpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vawl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neybx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -22,10 +59,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
-position = Vector2(519, 540)
+[node name="Fundo" type="Sprite2D" parent="ColorRect"]
+position = Vector2(960, 540)
+texture = ExtResource("2_mgdkx")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(531, 639)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_gt7wv")
+sprite_frames = SubResource("SpriteFrames_d8bmh")
+autoplay = "default"
+frame_progress = 0.00377195
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect"]
 custom_minimum_size = Vector2(100, 100)
@@ -35,11 +78,11 @@ anchor_left = 0.5
 anchor_top = 0.2
 anchor_right = 0.9
 anchor_bottom = 0.8
-offset_top = -0.320038
-offset_bottom = 0.319946
+offset_top = 72.68
+offset_bottom = 73.3199
 grow_horizontal = 0
 grow_vertical = 2
-color = Color(0.6, 0.3129, 0.00599999, 1)
+color = Color(0.290196, 0.423529, 0.560784, 0.607843)
 
 [node name="Sprite2D" type="Sprite2D" parent="ColorRect/ColorRect"]
 position = Vector2(650, 45.32)
