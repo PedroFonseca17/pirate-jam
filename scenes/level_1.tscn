@@ -23,7 +23,63 @@ script = ExtResource("1_3lfx3")
 metadata/_edit_horizontal_guides_ = [0.0, -8448.0, -8449.0, -8449.0]
 metadata/_edit_vertical_guides_ = [-15.0, 0.0, 15616.0, 15360.0, 257.0]
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 7501.0
+offset_top = -662.0
+offset_right = 8466.0
+offset_bottom = -575.0
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+z_index = 10
+layout_mode = 2
+theme_override_colors/font_color = Color(0.572216, 0.000237477, 0.572212, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "[W] [A] [S] [D]
+Movement"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+z_index = 10
+layout_mode = 2
+theme_override_colors/font_color = Color(0.572216, 0.000237477, 0.572212, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "[Space Bar]
+Shoot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer"]
+z_index = 10
+layout_mode = 2
+theme_override_colors/font_color = Color(0.572216, 0.000237477, 0.572212, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "[Arrow Keys]
+Shoot Direction"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer"]
+z_index = 10
+layout_mode = 2
+theme_override_colors/font_color = Color(0.572216, 0.000237477, 0.572212, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "[Shift]
+Dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-3, -18)
 color = Color(0.299548, 0.299547, 0.299547, 1)
 
 [node name="floorTilemap" type="TileMap" parent="."]

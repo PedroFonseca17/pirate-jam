@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bw6460lf2dihx"]
+[gd_scene load_steps=57 format=3 uid="uid://bw6460lf2dihx"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_gi4ek"]
 [ext_resource type="Texture2D" uid="uid://cggxf471bdc0b" path="res://assets/boss-attack.png" id="1_justa"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/States/SharedContext.gd" id="10_rbhej"]
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="10_waelo"]
 [ext_resource type="PackedScene" uid="uid://c8nuyfj6l50ju" path="res://scenes/hitbox_component.tscn" id="11_3hv8m"]
+[ext_resource type="Script" path="res://scripts/states/BossInitialPosition.gd" id="11_j13su"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cu50o"]
 atlas = ExtResource("2_tp76x")
@@ -376,7 +377,7 @@ shape = SubResource("CircleShape2D_2dg2o")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_1j1q2")
-initial_state = NodePath("BossTeleport")
+initial_state = NodePath("BossInitialPosition")
 
 [node name="BossTeleport" type="Node" parent="State Machine" node_paths=PackedStringArray("boss")]
 script = ExtResource("6_5ks5t")
@@ -396,6 +397,10 @@ boss = NodePath("../..")
 
 [node name="Shared Context" type="Node" parent="State Machine"]
 script = ExtResource("10_rbhej")
+
+[node name="BossInitialPosition" type="Node" parent="State Machine" node_paths=PackedStringArray("boss")]
+script = ExtResource("11_j13su")
+boss = NodePath("../..")
 
 [node name="HealthComponent" parent="." instance=ExtResource("10_waelo")]
 MAX_HEALTH = 90.0

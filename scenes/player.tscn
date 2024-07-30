@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://drt1incjfm4cv"]
+[gd_scene load_steps=106 format=3 uid="uid://drt1incjfm4cv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3ncmx"]
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="3_6p7dp"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cdc71gxsy126o" path="res://assets/sound effects/sabina-hurt.mp3" id="14_lt80n"]
 [ext_resource type="Texture2D" uid="uid://btm6bnjdtbte3" path="res://assets/player-assets/side-walk-end.png" id="14_tv7hm"]
 [ext_resource type="Texture2D" uid="uid://sa77q8y8bbba" path="res://assets/arrow.png" id="19_capqx"]
+[ext_resource type="Texture2D" uid="uid://dvc5bq04ydir3" path="res://assets/Backgrouds_and_extra/E.png" id="21_q88fu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsnaw"]
 atlas = ExtResource("3_bolt7")
@@ -792,6 +793,11 @@ libraries = {
 
 [node name="ShootCooldownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Interact_Button" type="Sprite2D" parent="."]
+position = Vector2(-84, -159)
+scale = Vector2(0.109722, 0.109722)
+texture = ExtResource("21_q88fu")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
