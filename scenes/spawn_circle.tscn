@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvee1q5b8k88t"]
+[gd_scene load_steps=4 format=3 uid="uid://cvee1q5b8k88t"]
 
 [ext_resource type="Script" path="res://scripts/Spawn_Circle.gd" id="1_tr6fs"]
-[ext_resource type="Texture2D" uid="uid://cepu6laac40hc" path="res://assets/tiles/dungeon-floor.png" id="2_2fcgw"]
-[ext_resource type="PackedScene" uid="uid://drt1incjfm4cv" path="res://scenes/player.tscn" id="3_8ulll"]
+[ext_resource type="Texture2D" uid="uid://bhbpeoh0xul4w" path="res://assets/Backgrouds_and_extra/circulo_de_transmutação_apagado.png" id="2_h8kd8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gw40y"]
 
@@ -10,18 +9,15 @@
 script = ExtResource("1_tr6fs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2fcgw")
+position = Vector2(988, 548)
+texture = ExtResource("2_h8kd8")
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
+position = Vector2(-11, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 scale = Vector2(8, 8)
 shape = SubResource("CircleShape2D_gw40y")
-
-[node name="Player" parent="." instance=ExtResource("3_8ulll")]
-position = Vector2(-254, 248)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_exited"]

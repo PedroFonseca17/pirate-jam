@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func flip():
-	sprite_2d.texture = load("res://assets/tiles/floral-walls.png")
+	sprite_2d.texture = load("res://assets/Backgrouds_and_extra/circulo_de_transmutação_aceso.png")
 
 
 func _on_area_2d_body_entered(body):

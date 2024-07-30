@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdsu0qqu6kotf"]
+[gd_scene load_steps=8 format=3 uid="uid://cdsu0qqu6kotf"]
 
 [ext_resource type="Script" path="res://scripts/Hub_scene.gd" id="1_k0tda"]
 [ext_resource type="Script" path="res://scripts/apperingMessage.gd" id="2_4ghnm"]
+[ext_resource type="Texture2D" uid="uid://d3tb3jsed7o58" path="res://assets/Backgrouds_and_extra/celing.png" id="2_pkgxg"]
 [ext_resource type="PackedScene" uid="uid://bueyi37se02e7" path="res://scenes/shop_UI.tscn" id="3_5aesb"]
 
 [sub_resource type="Animation" id="Animation_d0o6r"]
@@ -49,14 +50,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k0tda")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.634737, 0.412034, 0.0773892, 1)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_pkgxg")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

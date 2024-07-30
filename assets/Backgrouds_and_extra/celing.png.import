@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q6i7dutj8u2q"
-path="res://.godot/imported/Funso_sem_Sabina.png-5c9052376600a32f58ca4689125cb842.ctex"
+uid="uid://d3tb3jsed7o58"
+path="res://.godot/imported/celing.png-af7351e75f5a34d3031c40aab08abede.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Funso_sem_Sabina.png"
-dest_files=["res://.godot/imported/Funso_sem_Sabina.png-5c9052376600a32f58ca4689125cb842.ctex"]
+source_file="res://assets/Backgrouds_and_extra/celing.png"
+dest_files=["res://.godot/imported/celing.png-af7351e75f5a34d3031c40aab08abede.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bueyi37se02e7"]
 
 [ext_resource type="Script" path="res://scripts/shop_UI.gd" id="1_a0u0i"]
-[ext_resource type="Texture2D" uid="uid://q6i7dutj8u2q" path="res://assets/Funso_sem_Sabina.png" id="2_mgdkx"]
+[ext_resource type="Texture2D" uid="uid://q6i7dutj8u2q" path="res://assets/Backgrouds_and_extra/Funso_sem_Sabina.png" id="2_mgdkx"]
 [ext_resource type="Texture2D" uid="uid://uywcdtmvjw7" path="res://assets/player-assets/front-idle.png" id="3_5fxbb"]
 [ext_resource type="Texture2D" uid="uid://cv6simtc55qel" path="res://assets/currency_nb.png" id="3_l08px"]
 
