@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cglr6som520r"]
+[gd_scene load_steps=13 format=3 uid="uid://cglr6som520r"]
 
 [ext_resource type="Script" path="res://scripts/trap.gd" id="1_11yv3"]
 [ext_resource type="Texture2D" uid="uid://do6io2y803142" path="res://assets/trap.png" id="1_r3hgm"]
+[ext_resource type="AudioStream" uid="uid://tpxv50hbc3ea" path="res://assets/audio/steel-blade-slice-2-188214.mp3" id="3_v442k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ai6bc"]
 atlas = ExtResource("1_r3hgm")
@@ -81,6 +82,10 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 20)
 shape = SubResource("RectangleShape2D_egyov")
+
+[node name="trapAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v442k")
+bus = &"Sound Effect"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

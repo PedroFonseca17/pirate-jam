@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cgbl7w3egk2sf"]
+[gd_scene load_steps=54 format=3 uid="uid://cgbl7w3egk2sf"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_yc7aw"]
 [ext_resource type="Texture2D" uid="uid://vrv37plncmn7" path="res://assets/slime-assets/slime-back.png" id="2_tuea6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/States/EnemyFollow.gd" id="7_roglp"]
 [ext_resource type="PackedScene" uid="uid://c8nuyfj6l50ju" path="res://scenes/hitbox_component.tscn" id="8_s5sse"]
 [ext_resource type="Script" path="res://scripts/currency_controller.gd" id="10_dy76d"]
+[ext_resource type="AudioStream" uid="uid://l1s1krv2e1iv" path="res://assets/audio/zombie-bite-96528.mp3" id="12_tuj0x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w2be3"]
 atlas = ExtResource("2_tuea6")
@@ -440,6 +441,11 @@ VALUE = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_6w2a4")
 }
+
+[node name="EnemiHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_tuj0x")
+volume_db = -10.0
+pitch_scale = 1.5
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

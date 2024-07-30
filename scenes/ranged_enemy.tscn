@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://hntg0kxckryy"]
+[gd_scene load_steps=72 format=3 uid="uid://hntg0kxckryy"]
 
 [ext_resource type="PackedScene" uid="uid://d4aiubsji5y0w" path="res://scenes/health_component.tscn" id="1_mlutj"]
 [ext_resource type="Script" path="res://scripts/ranged_enemy.gd" id="1_vm42c"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/States/EnemyRangeAttack.gd" id="8_ggohs"]
 [ext_resource type="Texture2D" uid="uid://nc7fx51wtit2" path="res://assets/mage-assets/mage-side-attack.png" id="8_k2xc1"]
 [ext_resource type="Script" path="res://scripts/currency_controller.gd" id="13_m0rmp"]
+[ext_resource type="AudioStream" uid="uid://l1s1krv2e1iv" path="res://assets/audio/zombie-bite-96528.mp3" id="15_qm710"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_leq0p"]
 atlas = ExtResource("3_yeo0i")
@@ -595,5 +596,9 @@ VALUE = 15.0
 libraries = {
 "": SubResource("AnimationLibrary_pjmx0")
 }
+
+[node name="EnemiHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_qm710")
+volume_db = -10.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

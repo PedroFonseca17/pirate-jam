@@ -780,6 +780,7 @@ texture_scale = 5.0
 
 [node name="shootSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_bxun5")
+volume_db = -5.0
 bus = &"Sound Effect"
 
 [node name="hitShound" type="AudioStreamPlayer2D" parent="."]
