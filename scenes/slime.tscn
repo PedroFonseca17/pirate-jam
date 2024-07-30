@@ -427,10 +427,11 @@ initial_state = NodePath("Idle")
 script = ExtResource("6_k5kiw")
 enemy = NodePath("../..")
 
-[node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+[node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "navigation_agent_2d")]
 script = ExtResource("7_roglp")
 enemy = NodePath("../..")
-move_speed = 500.0
+move_speed = 200.0
+navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("10_dy76d")
@@ -446,6 +447,15 @@ libraries = {
 stream = ExtResource("12_tuj0x")
 volume_db = -10.0
 pitch_scale = 1.5
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 120.0
+target_desired_distance = 120.0
+path_max_distance = 120.0
+radius = 256.0
+neighbor_distance = 2000.0
+avoidance_layers = 2
+avoidance_mask = 2
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
