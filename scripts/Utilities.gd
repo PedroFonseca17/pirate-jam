@@ -24,6 +24,8 @@ func initialize_scenes():
 	scenes.append("res://scenes/level_4.tscn")
 	scenes.append("res://scenes/Hub_scene.tscn")
 	scenes.append("res://scenes/boss_room.tscn")
+	scenes.append("res://scenes/end_scene.tscn")
+	scenes.append("res://scenes/spawn_circle.tscn")
 	
 	# Map scene names to their indices
 	scene_map["MainMenu"] = 0
@@ -33,6 +35,8 @@ func initialize_scenes():
 	scene_map["Level_4"] = 4
 	scene_map["Hub_scene"] = 5
 	scene_map["Boss_room"] = 6
+	scene_map["End_scene"] = 7
+	scene_map["Spawn_Circle"] = 8
 
 
 

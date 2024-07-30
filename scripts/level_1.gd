@@ -5,6 +5,7 @@ var has_bridge_scene_played = false
 @onready var exit_trigger = $ExitTrigger
 @onready var ambient_music = $player/AmbientMusic
 
+
 func _ready():
 	ambient_music.play()
 	bridge.texture = load("res://assets/bridge-broken.png")
@@ -20,6 +21,7 @@ func _on_bridge_scene_trigger_body_entered(body):
 	if body.is_in_group("Player") and !has_bridge_scene_played:
 		has_bridge_scene_played = true
 		GlobalPlayerInfo.switch_is_in_textbox_scene()
+		GlobalPlayerInfo.is_in_tutorial = false
 		Dialogic.start("Bridge_dialog")
 	pass
 

@@ -18,7 +18,7 @@ class_name BossMayhem
 @onready var animations = boss.get_node("BossSprite") as AnimatedSprite2D
 @export var attack_damage = 10
 @export var knockback_force = 0
-
+var boss_is_dead = false
 
 # Variable to keep track of the player
 var player_inside_right_aoe = false
@@ -26,7 +26,7 @@ var player_inside_left_aoe = false
 
 var is_attacking = false
 var last_faced_direction := Vector2.RIGHT
-var attack_damage_bullet := 10.0
+@export var attack_damage_bullet := 10.0
 
 # Probability settings
 var probabilities = {
@@ -37,6 +37,7 @@ var probabilities = {
 }
 
 func Enter():
+	boss.boss_death.connect(on_death)
 	animations.connect("animation_finished", self._on_animation_finished)
 	animations.scale = Vector2(2, 2)
 	animations.play("disappear")
@@ -47,12 +48,20 @@ func Exit():
 	animations.disconnect("animation_finished", self._on_animation_finished)
 
 func _start_aoe() -> void:
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	handleAttackAnimation("start_attack")
 	await run_random_aoe_function()
 	handleAttackAnimation("end_attack")
 	
 	
 func _shooting_sequence() -> void:
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	# Handle animation side
 	await get_tree().create_timer(1.0).timeout # Initial delay before starting the shooting sequence
 	for i in range(30):
@@ -61,6 +70,10 @@ func _shooting_sequence() -> void:
 	# await _wait_for_all_projectiles()
 	
 func shoot():
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	var projectile_instance = projectile.instantiate() as MageProjectile
 	player = get_tree().get_first_node_in_group("Player")
 	if player:
@@ -80,6 +93,10 @@ func shoot():
 		get_parent().add_child(projectile_instance)
 
 func handleAreaExplosion(side: String):
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	match side:
 		"left":
 			if _is_player_inside(AOE_left_area):
@@ -89,6 +106,10 @@ func handleAreaExplosion(side: String):
 				apply_damage()
 
 func apply_damage():
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	var attack = Attack.new()
 	attack.attack_damage = attack_damage
 	attack.knockback_force = knockback_force
@@ -98,6 +119,10 @@ func apply_damage():
 		hitboxComponent.damage(attack)
 
 func _is_player_inside(area: Area2D) -> bool:
+	if !get_tree():
+		return false
+	if boss_is_dead:
+		return false
 	var bodies = area.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("Player"):
@@ -108,6 +133,10 @@ func handleAttackAnimation(animName: String):
 	animations.play(animName)
 
 func _on_animation_finished():
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	var current_animation = animations.animation
 	if current_animation == "start_attack":
 		handleAttackAnimation("attack_idle")
@@ -124,6 +153,10 @@ func _on_animation_finished():
 		teleportToMiddle()
 		
 func teleportToMiddle():
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	# Get the CollisionShape2D node
 	var collision_shape = teleport_area.get_child(0) as CollisionShape2D
 	# Check if the collision shape is a RectangleShape2D
@@ -212,6 +245,10 @@ func fourth_pattern_aoe():
 	AOE_sound_effect_left.playing = true
 	
 func run_random_aoe_function():
+	if !get_tree():
+		return
+	if boss_is_dead:
+		return
 	var random_value = randf()
 	var accumulated_probability = 0.0
 	
@@ -222,3 +259,14 @@ func run_random_aoe_function():
 			break
 
 
+func on_death():
+	boss_is_dead = true
+	flame_left.emitting = false
+	flame_right.emitting = false
+	aoe_right.visible = false
+	aoe_right.visible = false
+	AOE_sound_effect_left = false
+	
+	
+	
+	

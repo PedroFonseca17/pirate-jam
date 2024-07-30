@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfi3wmopltna7"]
+[gd_scene load_steps=21 format=3 uid="uid://bfi3wmopltna7"]
 
 [ext_resource type="Script" path="res://scripts/level_3.gd" id="1_sluiy"]
 [ext_resource type="TileSet" uid="uid://be2y6o5acfjgj" path="res://tileset/dungeon.tres" id="2_23vfs"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cvhgbelhkywan" path="res://scenes/ui_overlay.tscn" id="7_oc6uf"]
 [ext_resource type="PackedScene" uid="uid://dm4brpia2ep42" path="res://scenes/pause_menu.tscn" id="9_dcdvq"]
 [ext_resource type="PackedScene" uid="uid://bxqmlcmxf5p5k" path="res://scenes/tank.tscn" id="9_qx14q"]
+[ext_resource type="AudioStream" uid="uid://dmtxirx6bdj6" path="res://assets/audio/ghost-flowers-153303.mp3" id="10_73s24"]
 [ext_resource type="PackedScene" uid="uid://cglr6som520r" path="res://scenes/trap.tscn" id="11_o0rqj"]
 [ext_resource type="PackedScene" uid="uid://njhpriw650xb" path="res://scenes/knight.tscn" id="13_ry6sx"]
 [ext_resource type="PackedScene" uid="uid://cgbl7w3egk2sf" path="res://scenes/slime.tscn" id="14_vcs6a"]
@@ -171,6 +172,13 @@ limit_bottom = 0
 body = NodePath("../..")
 
 [node name="PauseMenu" parent="player/Camera2D" instance=ExtResource("9_dcdvq")]
+
+[node name="AmbientMusic" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2(-6.99951, -12)
+stream = ExtResource("10_73s24")
+volume_db = 5.0
+autoplay = true
+bus = &"Music"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.37918, 0.37918, 0.37918, 1)

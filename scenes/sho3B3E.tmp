@@ -1,0 +1,265 @@
+[gd_scene load_steps=10 format=3 uid="uid://bueyi37se02e7"]
+
+[ext_resource type="Script" path="res://scripts/Shop_UI.gd" id="1_a0u0i"]
+[ext_resource type="Texture2D" uid="uid://q6i7dutj8u2q" path="res://assets/Backgrouds_and_extra/Funso_sem_Sabina.png" id="2_mgdkx"]
+[ext_resource type="Texture2D" uid="uid://uywcdtmvjw7" path="res://assets/player-assets/front-idle.png" id="3_5fxbb"]
+[ext_resource type="Texture2D" uid="uid://cv6simtc55qel" path="res://assets/currency_nb.png" id="3_l08px"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owpo6"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ximpi"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vawl"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neybx"]
+atlas = ExtResource("3_5fxbb")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d8bmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owpo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ximpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vawl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neybx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a0u0i")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Fundo" type="Sprite2D" parent="ColorRect"]
+position = Vector2(960, 540)
+texture = ExtResource("2_mgdkx")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(531, 639)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_d8bmh")
+autoplay = "default"
+frame_progress = 0.00377195
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.8
+offset_top = 72.68
+offset_bottom = 73.3199
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.290196, 0.423529, 0.560784, 0.607843)
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect/ColorRect"]
+position = Vector2(650, 45.32)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("3_l08px")
+
+[node name="Currency" type="Label" parent="ColorRect/ColorRect"]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.05
+offset_left = -50.0
+offset_bottom = 30.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "1000"
+horizontal_alignment = 2
+
+[node name="ShopTittle" type="Label" parent="ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.03
+anchor_right = 0.5
+anchor_bottom = 0.03
+offset_left = -42.0
+offset_right = 42.0
+offset_bottom = 49.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 35
+text = "Shop"
+
+[node name="ShopList" type="VBoxContainer" parent="ColorRect/ColorRect"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -68.0
+offset_right = 289.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="more_currency" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="more_currency" type="Label" parent="ColorRect/ColorRect/ShopList/more_currency"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Potion"
+
+[node name="more_currency Description" type="Label" parent="ColorRect/ColorRect/ShopList/more_currency"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Doubles currency gain but half health"
+
+[node name="Buy more_currency" type="Button" parent="ColorRect/ColorRect/ShopList/more_currency"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "
+"
+
+[node name="Dash" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="Dash" type="Label" parent="ColorRect/ColorRect/ShopList/Dash"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Double Dash"
+
+[node name="Dash Description" type="Label" parent="ColorRect/ColorRect/ShopList/Dash"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Ability to dash in the facing direction"
+
+[node name="Buy dash" type="Button" parent="ColorRect/ColorRect/ShopList/Dash"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "
+"
+
+[node name="Shield" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Shield" type="Label" parent="ColorRect/ColorRect/ShopList/Shield"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Shield"
+
+[node name="Shield Description" type="Label" parent="ColorRect/ColorRect/ShopList/Shield"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Blocks 1 instance of damage per room
+"
+
+[node name="Buy Shield" type="Button" parent="ColorRect/ColorRect/ShopList/Shield"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+
+[node name="Revive" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Revive" type="Label" parent="ColorRect/ColorRect/ShopList/Revive"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Revive"
+
+[node name="Revive Description" type="Label" parent="ColorRect/ColorRect/ShopList/Revive"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Revives players with 50% of health"
+
+[node name="Buy Revive" type="Button" parent="ColorRect/ColorRect/ShopList/Revive"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "
+"
+
+[node name="Health" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Health" type="Label" parent="ColorRect/ColorRect/ShopList/Health"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Health Boost"
+
+[node name="Health Description" type="Label" parent="ColorRect/ColorRect/ShopList/Health"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Boostes health by 10"
+
+[node name="Buy Health" type="Button" parent="ColorRect/ColorRect/ShopList/Health"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "
+"
+
+[node name="Back" type="Button" parent="ColorRect/ColorRect"]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97
+anchor_top = 0.97
+anchor_right = 0.97
+anchor_bottom = 0.97
+offset_left = -80.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/more_currency/Buy more_currency" to="." method="_on_buy_more_currency_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Dash/Buy dash" to="." method="_on_buy_dash_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="." method="_on_buy_shield_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Revive/Buy Revive" to="." method="_on_buy_revive_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Health/Buy Health" to="." method="_on_buy_health_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/Back" to="." method="_on_back_pressed"]

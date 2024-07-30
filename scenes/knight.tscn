@@ -563,7 +563,7 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "navigation_agent_2d")]
 script = ExtResource("9_ufl4q")
 enemy = NodePath("../..")
-move_speed = 500.0
+move_speed = 200.0
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="AttackCoolDownTimer" type="Timer" parent="."]

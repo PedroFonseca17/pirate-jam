@@ -11,9 +11,14 @@ signal playerHit
 var is_player_death = false
 
 func _ready():
+	if get_parent().is_in_group("Player"):
+		health = GlobalPlayerInfo.player_max_health
+		return
 	health = MAX_HEALTH
-	print("health component health set", health)
 	
+func change_max_health(amount):
+	MAX_HEALTH = amount
+	health = MAX_HEALTH
 
 func damage(attack: Attack):
 	var parent = get_parent()
@@ -26,12 +31,14 @@ func damage(attack: Attack):
 		print(health)
 		if health <= 0:
 			targetDeath.emit()
-		#	get_parent().queue_free()
 
 func set_health(current_health: float):
 	health = current_health
 
 func handle_player_damage(attack: Attack):
+	if GlobalPlayerInfo.is_player_invincible:
+		return
+	print("damage tacken",attack.attack_damage )
 	var final_attack_damage = attack.attack_damage
 	if GlobalPlayerInfo.pill:
 		final_attack_damage = final_attack_damage * 2

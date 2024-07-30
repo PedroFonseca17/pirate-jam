@@ -627,7 +627,6 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "navigation_agent_2d")]
 script = ExtResource("7_6bvxx")
 enemy = NodePath("../..")
-move_speed = 300.0
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="HitAnimation" type="AnimationPlayer" parent="."]

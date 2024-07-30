@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdsu0qqu6kotf"]
+[gd_scene load_steps=9 format=3 uid="uid://cdsu0qqu6kotf"]
 
 [ext_resource type="Script" path="res://scripts/Hub_scene.gd" id="1_k0tda"]
 [ext_resource type="Script" path="res://scripts/apperingMessage.gd" id="2_4ghnm"]
 [ext_resource type="Texture2D" uid="uid://d3tb3jsed7o58" path="res://assets/Backgrouds_and_extra/celing.png" id="2_pkgxg"]
 [ext_resource type="PackedScene" uid="uid://bueyi37se02e7" path="res://scenes/shop_UI.tscn" id="3_5aesb"]
+[ext_resource type="AudioStream" uid="uid://bahtywsmsnn75" path="res://assets/audio/relaxing-145038.mp3" id="5_kqmb6"]
 
 [sub_resource type="Animation" id="Animation_d0o6r"]
 length = 0.001
@@ -118,6 +119,10 @@ root_node = NodePath("../ColorRect")
 libraries = {
 "": SubResource("AnimationLibrary_agj16")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kqmb6")
+volume_db = -5.0
 
 [connection signal="timeout" from="ApperingText/next leter" to="ApperingText" method="_on_next_leter_timeout"]
 [connection signal="pressed" from="ApperingText/Button" to="." method="_on_button_pressed"]

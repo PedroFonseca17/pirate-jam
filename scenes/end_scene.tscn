@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://boopj7irayp02"]
+[gd_scene load_steps=2 format=3 uid="uid://boopj7irayp02"]
+
+[ext_resource type="Texture2D" uid="uid://iqgsxtygpew" path="res://assets/finish_screen.png" id="1_7mn0w"]
 
 [node name="End_scene" type="Node"]
 
@@ -9,15 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
@@ -33,7 +26,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "Thank you for playing [GAME NAME], our entry for Pirate Game Jam 15!
+text = "Thank you for playing Individuation , our entry for Pirate Game Jam 15!
 
 Your participation in this challenging yet rewarding adventure with Sabina means the world to us.
 
@@ -42,6 +35,11 @@ We’d love to hear your feedback and thoughts.
 Feel free to go to the main menu and replay the game to unlock all the upgrades.
 
 Happy gaming!
-Team [TEAM NAME]"
+Team Miles per Frame"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(960, 541)
+texture = ExtResource("1_7mn0w")

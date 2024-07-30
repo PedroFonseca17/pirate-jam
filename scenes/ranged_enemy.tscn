@@ -557,10 +557,10 @@ MAX_HEALTH = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1publ")
-animation = &"death"
+animation = &"front"
 autoplay = "front"
 frame = 5
-frame_progress = 0.0169039
+frame_progress = 0.46697
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, -4)
@@ -585,7 +585,8 @@ enemy = NodePath("../..")
 [node name="RangeAttack" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("8_ggohs")
 enemy = NodePath("../..")
-move_speed = 500.0
+move_speed = 250.0
+attack_rate = 5.0
 
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("13_m0rmp")
