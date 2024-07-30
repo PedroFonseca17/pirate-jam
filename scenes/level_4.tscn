@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://djfg0iulektis"]
+[gd_scene load_steps=20 format=3 uid="uid://djfg0iulektis"]
 
 [ext_resource type="Script" path="res://scripts/level_4.gd" id="1_68xuj"]
 [ext_resource type="TileSet" uid="uid://be2y6o5acfjgj" path="res://tileset/dungeon.tres" id="2_aestp"]
+[ext_resource type="PackedScene" uid="uid://cglr6som520r" path="res://scenes/trap.tscn" id="2_jrlcb"]
 [ext_resource type="Texture2D" uid="uid://k6bdj1p70dnn" path="res://assets/tiles/open-floor.png" id="3_1c21j"]
 [ext_resource type="TileSet" uid="uid://4lu3yuq6bgny" path="res://assets/tiles/Open_map_tiles.tres" id="3_duqxe"]
 [ext_resource type="PackedScene" uid="uid://dxqydnkydkex2" path="res://scenes/water.tscn" id="4_wtptl"]
@@ -9,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://dr83ig3b32bxe" path="res://scenes/bridge_small.tscn" id="6_3nql7"]
 [ext_resource type="Texture2D" uid="uid://nqeiqnw1y88m" path="res://assets/sea-tile.png" id="7_b2p0a"]
 [ext_resource type="PackedScene" uid="uid://cvhgbelhkywan" path="res://scenes/ui_overlay.tscn" id="8_lu7bh"]
+[ext_resource type="PackedScene" uid="uid://dm4brpia2ep42" path="res://scenes/pause_menu.tscn" id="9_vfine"]
+[ext_resource type="PackedScene" uid="uid://bxqmlcmxf5p5k" path="res://scenes/tank.tscn" id="11_ecyxl"]
+[ext_resource type="PackedScene" uid="uid://njhpriw650xb" path="res://scenes/knight.tscn" id="12_s3cnb"]
+[ext_resource type="PackedScene" uid="uid://cgbl7w3egk2sf" path="res://scenes/slime.tscn" id="13_otuda"]
+[ext_resource type="PackedScene" uid="uid://hntg0kxckryy" path="res://scenes/ranged_enemy.tscn" id="14_62o07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbfu6"]
 texture = ExtResource("3_1c21j")
@@ -142,7 +148,6 @@ layer_2/tile_data = PackedInt32Array(-655331, 1, 0, -1179633, 1, 0, -1900526, 1,
 metadata/_edit_lock_ = true
 
 [node name="water" parent="." instance=ExtResource("4_wtptl")]
-visible = false
 z_index = -2
 position = Vector2(7385.49, -4271)
 scale = Vector2(124.476, 83.5156)
@@ -166,8 +171,9 @@ limit_bottom = 270
 [node name="UI_overlay" parent="player/Camera2D" node_paths=PackedStringArray("body") instance=ExtResource("8_lu7bh")]
 body = NodePath("../..")
 
+[node name="PauseMenu" parent="player/Camera2D" instance=ExtResource("9_vfine")]
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.37918, 0.37918, 0.37918, 1)
 metadata/_edit_lock_ = true
 
@@ -188,5 +194,408 @@ position = Vector2(7520.65, 112.618)
 z_index = 4
 position = Vector2(-101.65, 57.382)
 shape = SubResource("RectangleShape2D_gld4q")
+
+[node name="Trap" type="Node" parent="."]
+
+[node name="Trap" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5501, -5779)
+
+[node name="Trap2" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5506.59, -6016.82)
+
+[node name="Trap3" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5500.24, -6273.98)
+
+[node name="Trap4" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5503.42, -6524.79)
+
+[node name="Trap5" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5772.6, -6528.08)
+
+[node name="Trap6" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(6015.2, -6528.08)
+
+[node name="Trap7" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9067, -6540)
+
+[node name="Trap8" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9361.34, -6530.84)
+
+[node name="Trap9" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9606.74, -6525.18)
+
+[node name="Trap10" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9597.3, -6272.22)
+
+[node name="Trap11" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9599, -6032)
+
+[node name="Trap12" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9606.74, -5760.65)
+
+[node name="Trap13" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9611, -5518)
+
+[node name="Trap14" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9917.95, -5503.56)
+
+[node name="Trap15" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(10165.9, -5497.2)
+
+[node name="Trap16" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11918.8, -5492.22)
+
+[node name="Trap17" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11924, -5259)
+
+[node name="Trap18" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11924, -4999)
+
+[node name="Trap19" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11654, -4995)
+
+[node name="Trap20" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11402.4, -4986.66)
+
+[node name="Trap21" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9848.44, -7046.66)
+
+[node name="Trap22" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9578.44, -7048.66)
+
+[node name="Trap23" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9590.44, -7284.66)
+
+[node name="Trap24" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9580.44, -7554.66)
+
+[node name="Trap25" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9848.44, -7548.66)
+
+[node name="Trap26" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11395.2, -3709.91)
+
+[node name="Trap27" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11391.5, -3962.87)
+
+[node name="Trap28" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11926.4, -2418.17)
+
+[node name="Trap29" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11921.3, -2166.19)
+
+[node name="Trap30" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11916.3, -1906.64)
+
+[node name="Trap31" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11682, -1911.68)
+
+[node name="Trap32" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(11442.6, -1914.2)
+
+[node name="Trap33" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9870.19, -1916.72)
+
+[node name="Trap34" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9608.13, -1916.72)
+
+[node name="Trap35" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9600.57, -2161.15)
+
+[node name="Trap36" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9610.65, -2435.81)
+
+[node name="Trap37" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9862.63, -2420.69)
+
+[node name="Trap38" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9615.63, -3704.34)
+
+[node name="Trap39" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9608.5, -3445.09)
+
+[node name="Trap40" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9591.85, -3195.36)
+
+[node name="Trap41" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9584.71, -2955.14)
+
+[node name="Trap42" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9323, -2955)
+
+[node name="Trap43" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(9075.13, -2944.1)
+
+[node name="Trap44" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3993.83, -5505.9)
+
+[node name="Trap45" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3716, -5501)
+
+[node name="Trap46" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3715.14, -5754.62)
+
+[node name="Trap47" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3199.73, -7546.6)
+
+[node name="Trap48" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3451.44, -7543.6)
+
+[node name="Trap49" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3193.73, -7294.88)
+
+[node name="Trap50" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3197, -7046)
+
+[node name="Trap51" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3721.14, -7540.6)
+
+[node name="Trap52" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5007.9, -7549.03)
+
+[node name="Trap53" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5266, -7545)
+
+[node name="Trap54" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5258, -7310)
+
+[node name="Trap55" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5249, -7049)
+
+[node name="Trap56" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5004, -7045)
+
+[node name="Trap57" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5008, -3967)
+
+[node name="Trap58" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5271.73, -3957.86)
+
+[node name="Trap59" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5529, -3958)
+
+[node name="Trap60" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5517.69, -3444.51)
+
+[node name="Trap61" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5508.78, -3702.87)
+
+[node name="Trap62" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5514, -3197)
+
+[node name="Trap63" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5510.57, -2949.17)
+
+[node name="Trap64" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(5772.49, -2938.48)
+
+[node name="Trap65" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(6025.51, -2934.91)
+
+[node name="Trap66" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3192.46, -2941.99)
+
+[node name="Trap67" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3201, -2695)
+
+[node name="Trap68" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3190.21, -2434.64)
+
+[node name="Trap69" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3187.97, -2176.47)
+
+[node name="Trap70" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3214.91, -1936.27)
+
+[node name="Trap71" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3475, -1927)
+
+[node name="Trap72" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3733, -1923)
+
+[node name="Trap73" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(3985, -1930)
+
+[node name="Trap74" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7313, -2435)
+
+[node name="Trap75" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7811, -2166)
+
+[node name="Trap76" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7820, -1924)
+
+[node name="Trap77" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(6796.05, -4229.75)
+
+[node name="Trap78" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7045.5, -3969.61)
+
+[node name="Trap79" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7306, -3966)
+
+[node name="Trap80" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7583.6, -3955.35)
+
+[node name="Trap81" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7822, -3965)
+
+[node name="Trap82" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(8063, -3971)
+
+[node name="Trap83" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(6793, -4491)
+
+[node name="Trap84" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(6785.07, -4735.47)
+
+[node name="Trap85" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(6783.07, -4983.47)
+
+[node name="Trap86" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(6789, -5247)
+
+[node name="Trap87" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7063, -5487)
+
+[node name="Trap88" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7325, -5495)
+
+[node name="Trap89" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7587.07, -5495.47)
+
+[node name="Trap90" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(7831, -5501)
+
+[node name="Trap91" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(8068, -5504)
+
+[node name="Trap92" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(8320, -5246)
+
+[node name="Trap93" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(8304, -4989)
+
+[node name="Trap94" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(8328.94, -4720.14)
+
+[node name="Trap95" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(8318, -4485)
+
+[node name="Trap96" parent="Trap" instance=ExtResource("2_jrlcb")]
+position = Vector2(8311.99, -4232.79)
+
+[node name="Tank" type="Node" parent="."]
+
+[node name="Tank" parent="Tank" instance=ExtResource("11_ecyxl")]
+position = Vector2(6449, -3281)
+
+[node name="Tank2" parent="Tank" instance=ExtResource("11_ecyxl")]
+position = Vector2(3432.87, -6462.73)
+
+[node name="Tank3" parent="Tank" instance=ExtResource("11_ecyxl")]
+position = Vector2(9451.76, -5206.91)
+
+[node name="Tank4" parent="Tank" instance=ExtResource("11_ecyxl")]
+position = Vector2(10458.7, -2152.21)
+
+[node name="Tank5" parent="Tank" instance=ExtResource("11_ecyxl")]
+position = Vector2(3455.5, -3996.34)
+
+[node name="Tank6" parent="Tank" instance=ExtResource("11_ecyxl")]
+position = Vector2(11658, -7028)
+
+[node name="Knight" type="Node" parent="."]
+
+[node name="Knight" parent="Knight" instance=ExtResource("12_s3cnb")]
+position = Vector2(7108, -6281)
+
+[node name="Knight2" parent="Knight" instance=ExtResource("12_s3cnb")]
+position = Vector2(4600.59, -5260.87)
+
+[node name="Knight3" parent="Knight" instance=ExtResource("12_s3cnb")]
+position = Vector2(5654.46, -2229.64)
+
+[node name="Knight4" parent="Knight" instance=ExtResource("12_s3cnb")]
+position = Vector2(10363.8, -4130.45)
+
+[node name="Knight5" parent="Knight" instance=ExtResource("12_s3cnb")]
+position = Vector2(11581.2, -5678.87)
+
+[node name="Slime" type="Node" parent="."]
+
+[node name="Slime" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(4718, -2036)
+
+[node name="Slime2" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(6560.92, -2225.98)
+
+[node name="Slime3" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(6042.58, -3926.33)
+
+[node name="Slime4" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(7564.28, -3270.13)
+
+[node name="Slime5" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(9283.96, -4469.38)
+
+[node name="Slime6" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(8384.52, -6211.69)
+
+[node name="Slime7" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(6065.21, -5385.79)
+
+[node name="Slime8" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(7739.64, -6732.13)
+
+[node name="Slime9" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(10882.7, -5271.85)
+
+[node name="Slime10" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(10501.7, -7259.27)
+
+[node name="Slime11" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(11694.4, -2943.04)
+
+[node name="Slime12" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(4220.84, -4165.66)
+
+[node name="Slime13" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(3387.79, -5238.45)
+
+[node name="Slime14" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(4346.7, -7240.19)
+
+[node name="Slime15" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(8254.9, -3208.68)
+
+[node name="Slime16" parent="Slime" instance=ExtResource("13_otuda")]
+position = Vector2(7449.53, -1405.5)
+
+[node name="Mage" type="Node" parent="."]
+
+[node name="RangedEnemy" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(7130, -2151)
+
+[node name="RangedEnemy2" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(7067.3, -3148.72)
+
+[node name="RangedEnemy3" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(5223.9, -5233.59)
+
+[node name="RangedEnemy4" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(10080.1, -5123.63)
+
+[node name="RangedEnemy5" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(11729.5, -3381.02)
+
+[node name="RangedEnemy6" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(3811.14, -7019.32)
+
+[node name="RangedEnemy7" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(3426.33, -3465.88)
+
+[node name="RangedEnemy8" parent="Mage" instance=ExtResource("14_62o07")]
+position = Vector2(6858, -5798)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

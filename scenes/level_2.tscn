@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ddsdqqfd4r6n4"]
+[gd_scene load_steps=21 format=3 uid="uid://ddsdqqfd4r6n4"]
 
 [ext_resource type="Script" path="res://scripts/level_2.gd" id="1_uj0rj"]
 [ext_resource type="TileSet" uid="uid://4lu3yuq6bgny" path="res://assets/tiles/Open_map_tiles.tres" id="2_717au"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://hntg0kxckryy" path="res://scenes/ranged_enemy.tscn" id="8_tevip"]
 [ext_resource type="PackedScene" uid="uid://dr83ig3b32bxe" path="res://scenes/bridge_small.tscn" id="9_5p310"]
 [ext_resource type="PackedScene" uid="uid://njhpriw650xb" path="res://scenes/knight.tscn" id="9_ludk2"]
+[ext_resource type="PackedScene" uid="uid://dm4brpia2ep42" path="res://scenes/pause_menu.tscn" id="9_v0mij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbfu6"]
 texture = ExtResource("4_by7sr")
@@ -169,6 +170,8 @@ limit_bottom = 0
 [node name="UI_overlay" parent="player/Camera2D" node_paths=PackedStringArray("body") instance=ExtResource("6_3jrwl")]
 body = NodePath("../..")
 metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="player/Camera2D" instance=ExtResource("9_v0mij")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.37918, 0.37918, 0.37918, 1)
