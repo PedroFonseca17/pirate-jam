@@ -3,7 +3,7 @@ class_name EnemyIdle
 
 @export var enemy: CharacterBody2D
 @export var move_speed := 140.0
-@export var vision_range := 500
+@export var vision_range := 256 * 3
 
 var player : CharacterBody2D
 
@@ -36,6 +36,7 @@ func Physics_Update(_delta: float):
 		if enemy.is_in_group("RangedEnemies"):
 			Transitioned.emit(self, 'RangeAttack')
 		else:
+			print("i went to follow")
 			Transitioned.emit(self, 'Follow')
 
 func on_enemy_hit():

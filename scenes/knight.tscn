@@ -559,10 +559,11 @@ initial_state = NodePath("Idle")
 script = ExtResource("8_kxbp4")
 enemy = NodePath("../..")
 
-[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "navigation_agent_2d")]
 script = ExtResource("9_ufl4q")
 enemy = NodePath("../..")
 move_speed = 500.0
+navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="AttackCoolDownTimer" type="Timer" parent="."]
 
@@ -574,6 +575,11 @@ health_component = NodePath("../HealthComponent")
 libraries = {
 "": SubResource("AnimationLibrary_m5ngd")
 }
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 200.0
+target_desired_distance = 200.0
+path_max_distance = 200.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
