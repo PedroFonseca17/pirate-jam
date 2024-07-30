@@ -18,8 +18,8 @@ var currency: int = 0
 signal change_currency
 signal health_changed
 
-var intro_scene: bool = false
-var is_in_tutorial = false # This is set to false when the maze level is completed
+var intro_scene: bool = true
+var is_in_tutorial = true # This is set to false when the maze level is completed
 var is_player_invincible = false
 
 # Called when the node enters the scene tree for the first time.

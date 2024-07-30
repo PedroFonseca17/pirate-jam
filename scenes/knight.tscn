@@ -580,6 +580,7 @@ libraries = {
 [node name="EnemiHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_8v8qr")
 volume_db = -10.0
+bus = &"Sound Effect"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 200.0

@@ -89,6 +89,7 @@ pre_scene = NodePath("../Main_Menu")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_u0xpx")
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="UILayer/Main_Menu/VBoxContainer/Start" to="UILayer/Main_Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/Main_Menu/VBoxContainer/Option" to="UILayer/Main_Menu" method="_on_option_pressed"]
