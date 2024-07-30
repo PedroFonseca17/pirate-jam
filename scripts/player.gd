@@ -23,6 +23,7 @@ var last_direction_change_time = 0.0
 @onready var shoot_cooldown_timer = $ShootCooldownTimer
 @onready var arrow_sprite = $arrow
 @onready var hit_shound = $hitShound
+@onready var interact_button = $Interact_Button
 
 
 
@@ -48,6 +49,7 @@ func _ready():
 	animation_player.autoplay = "idle_down"
 	health_component.playerDeath.connect(_on_player_death)
 	health_component.brokePlayerShield.connect(_on_shield_break)
+	interact_button.hide()
 	if GlobalPlayerInfo.player_health:
 		health_component.set_health(GlobalPlayerInfo.player_health)
 
@@ -284,3 +286,9 @@ func _on_shield_break():
 	animation_player.play("RESET")
 	animation_player.play("shield_break")
 	pass;
+
+func show_interact():
+	interact_button.show()
+
+func hide_interact():
+	interact_button.hide()

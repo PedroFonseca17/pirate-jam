@@ -7,6 +7,7 @@ class_name RangedEnemy
 @onready var projectile = preload("res://scenes/mageProjectile.tscn")
 @onready var health_component = $HealthComponent
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var enemi_hit = $EnemiHit
 
 @export var attack_damage := 10.0
 var knockback_force = 0
@@ -43,6 +44,7 @@ func on_hit():
 	Enemy_hit.emit()
 	hit_animation.play("RESET")
 	hit_animation.play("HIT")
+	enemi_hit.play()
 
 func _start_shooting_coroutine():
 	# Start the coroutine for shooting projectiles

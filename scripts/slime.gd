@@ -12,6 +12,7 @@ signal Enemy_hit
 @onready var health_component = $HealthComponent
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var animation_player = $AnimationPlayer
+@onready var enemi_hit = $EnemiHit
 
 
 @export var attack_damage := 5.0
@@ -88,6 +89,7 @@ func on_hit():
 	Enemy_hit.emit()
 	animation_player.play("RESET")
 	animation_player.play("HIT")
+	enemi_hit.play()
 
 func on_death():
 	if !isDying:

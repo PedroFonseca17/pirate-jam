@@ -4,6 +4,7 @@ extends Node2D
 @onready var animated_sprite = $AnimatedSprite2D
 @export var attack_damage = 10
 @export var knockback_force = 0
+@onready var trap_audio = $trapAudio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +19,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	
 	if player and body.is_in_group("Player"):
+		trap_audio.play()
 		var attack = Attack.new()
 		attack.attack_damage = attack_damage
 		attack.knockback_force = knockback_force

@@ -3,8 +3,10 @@ extends Node2D
 @onready var bridge = $Bridge
 var has_bridge_scene_played = false
 @onready var exit_trigger = $ExitTrigger
+@onready var ambient_music = $player/AmbientMusic
 
 func _ready():
+	ambient_music.play()
 	bridge.texture = load("res://assets/bridge-broken.png")
 	Dialogic.signal_event.connect(_handle_dialogic_signals)
 

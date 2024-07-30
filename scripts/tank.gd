@@ -8,6 +8,7 @@ class_name Enemy
 @onready var attack_cool_down_timer = $AttackCoolDownTimer # Timer for cooldown between attacks
 @onready var health_component = $HealthComponent
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var enemi_hit = $EnemiHit
 
 @export var attack_damage := 15.0
 var knockback_force = 0
@@ -111,6 +112,7 @@ func on_hit():
 	Enemy_hit.emit()
 	hit_animation.play("RESET")
 	hit_animation.play("hit2")
+	enemi_hit.play()
 
 func _on_animated_sprite_2d_animation_finished():
 	if animated_sprite.animation == "death":
