@@ -93,7 +93,7 @@ func on_hit():
 
 func on_death():
 	if !isDying:
-		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled", true)
 		collision_layer = 0 
 		isDying = true
 		animated_sprite.play("death")

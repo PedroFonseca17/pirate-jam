@@ -43,7 +43,7 @@ func _physics_process(delta):
 func on_hit():
 	Enemy_hit.emit()
 	hit_animation.play("RESET")
-	hit_animation.play("HIT")
+	hit_animation.play("hit")
 	enemi_hit.play()
 
 func _start_shooting_coroutine():
@@ -114,5 +114,5 @@ func on_death():
 	if !isDying:
 		isDying = true
 		collision_layer = 0 
-		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled", true)
 		animated_sprite.play("death")

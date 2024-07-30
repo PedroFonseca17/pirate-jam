@@ -1,6 +1,6 @@
 extends Node
 
-#Switches that conbtrol powerups
+#Switches that control powerups
 var double_dash: bool = false
 var shield: bool = false
 var revive: bool = false
@@ -10,13 +10,17 @@ var is_in_textbox_scene = false
 var player_health = null
 var used_shield = false
 var used_revive = false
+var player_max_health = 100
 signal shield_used
 signal revive_used
 
 var currency: int = 0
 signal change_currency
+signal health_changed
 
-var intro_scene: bool = true # TODO: put to true
+var intro_scene: bool = true
+var is_in_tutorial = true # This is set to false when the maze level is completed
+var is_player_invincible = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -59,7 +63,7 @@ func view_intro_screen():
 
 func switch_is_in_textbox_scene():
 	is_in_textbox_scene = !is_in_textbox_scene
-	
+	is_player_invincible = is_in_textbox_scene
 
 func switch_pill():
 	pill = !pill
@@ -83,3 +87,11 @@ func reset_on_start_run():
 	
 func reset_one_time_items():
 	pill = false
+
+func tutorial_death_reset():
+	player_health = null
+	currency = 0
+	
+func add_player_health():
+	player_max_health = player_max_health + 10
+	health_changed.emit()

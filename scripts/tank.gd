@@ -124,6 +124,6 @@ func on_death():
 	if !isDying:
 		isDying = true
 		collision_layer = 0 
-		collision_shape_2d.disabled = true
+		collision_shape_2d.set_deferred("disabled", true)
 		animated_sprite.scale = Vector2(1.2, 1.2)
 		animated_sprite.play("death")

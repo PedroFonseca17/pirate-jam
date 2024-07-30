@@ -9,7 +9,7 @@ var player : CharacterBody2D
 
 var is_attacking = false
 var last_faced_direction := Vector2.RIGHT
-var attack_damage := 10.0
+@export var attack_damage := 10.0
 
 func Enter():
 	call_deferred("_shooting_sequence")

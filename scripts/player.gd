@@ -25,8 +25,6 @@ var last_direction_change_time = 0.0
 @onready var hit_shound = $hitShound
 @onready var interact_button = $Interact_Button
 
-
-
 # Dash properties
 const dash_speed = 1500.0
 var dash_time_left = 0.5  # Duration of the dash
@@ -50,6 +48,7 @@ func _ready():
 	health_component.playerDeath.connect(_on_player_death)
 	health_component.brokePlayerShield.connect(_on_shield_break)
 	interact_button.hide()
+	GlobalPlayerInfo.health_changed.connect(_on_max_health_change)
 	if GlobalPlayerInfo.player_health:
 		health_component.set_health(GlobalPlayerInfo.player_health)
 
@@ -257,7 +256,11 @@ func set_state(new_state):
 
 func _on_animated_sprite_2d_animation_finished():
 	if animations.animation == "death":
-		SceneTransition.change_scene("Hub_scene", self)
+		if GlobalPlayerInfo.is_in_tutorial:
+			GlobalPlayerInfo.tutorial_death_reset()
+			SceneTransition.change_scene("Level_1", self)
+		else:
+			SceneTransition.change_scene("Hub_scene", self)
 	
 	if current_state == State.START_MOVE:
 		set_state(State.LOOP_MOVE)
@@ -292,3 +295,6 @@ func show_interact():
 
 func hide_interact():
 	interact_button.hide()
+
+func _on_max_health_change():
+	health_component.MAX_HEALTH = GlobalPlayerInfo.player_max_health

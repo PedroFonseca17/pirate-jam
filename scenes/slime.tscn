@@ -430,7 +430,7 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "navigation_agent_2d")]
 script = ExtResource("7_roglp")
 enemy = NodePath("../..")
-move_speed = 200.0
+move_speed = 250.0
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="CurrencyController" type="Node2D" parent="." node_paths=PackedStringArray("health_component")]

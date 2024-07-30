@@ -7,11 +7,13 @@ extends Control
 @onready var shield_button: Button = $"ColorRect/ColorRect/ShopList/Shield/Buy Shield"
 @onready var revive_button: Button = $"ColorRect/ColorRect/ShopList/Revive/Buy Revive"
 @onready var more_currency_button: Button = $"ColorRect/ColorRect/ShopList/more_currency/Buy more_currency"
+@onready var buy_health = $"ColorRect/ColorRect/ShopList/Health/Buy Health"
 
 var dash_price: int = 300
 var shield_price: int = 250
 var revive_price: int = 600
 var more_currency: int = 100
+var health_boost_price: int = 600
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +25,7 @@ func button_text():
 	check_if_already_bought(GlobalPlayerInfo.shield,shield_price,shield_button)
 	check_if_already_bought(GlobalPlayerInfo.revive,revive_price,revive_button)
 	check_if_already_bought(GlobalPlayerInfo.more_currency,more_currency,more_currency_button)
+	buy_health.text = str(health_boost_price)
 
 func check_if_already_bought(item: bool, itemValue: int, button: Button):
 	if (item):
@@ -63,3 +66,11 @@ func handle_button_press(price: int,switchFn: String ,button: Button):
 func _on_back_pressed():
 	hide()
 	pre_scene.reset_focus()
+
+
+func _on_buy_health_pressed():
+	if (GlobalPlayerInfo.currency >= health_boost_price):
+		print("bought")
+		GlobalPlayerInfo.add_player_health()
+		GlobalPlayerInfo.remove_currency(health_boost_price)
+		refresh_currency()

@@ -21,7 +21,7 @@ func seeker_setup():
 		navigation_agent_2d.target_position = player.global_position
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func Physics_Update(delta):
+func Physics_Update(_delta):
 	if !navigation_agent_2d:
 		return
 	if is_instance_valid(player):

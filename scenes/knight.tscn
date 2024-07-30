@@ -563,7 +563,7 @@ enemy = NodePath("../..")
 [node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "navigation_agent_2d")]
 script = ExtResource("9_ufl4q")
 enemy = NodePath("../..")
-move_speed = 500.0
+move_speed = 200.0
 navigation_agent_2d = NodePath("../../NavigationAgent2D")
 
 [node name="AttackCoolDownTimer" type="Timer" parent="."]
@@ -580,6 +580,7 @@ libraries = {
 [node name="EnemiHit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_8v8qr")
 volume_db = -10.0
+bus = &"Sound Effect"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 200.0

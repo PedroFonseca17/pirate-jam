@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bueyi37se02e7"]
 
-[ext_resource type="Script" path="res://scripts/shop_UI.gd" id="1_a0u0i"]
+[ext_resource type="Script" path="res://scripts/Shop_UI.gd" id="1_a0u0i"]
 [ext_resource type="Texture2D" uid="uid://q6i7dutj8u2q" path="res://assets/Backgrouds_and_extra/Funso_sem_Sabina.png" id="2_mgdkx"]
 [ext_resource type="Texture2D" uid="uid://uywcdtmvjw7" path="res://assets/player-assets/front-idle.png" id="3_5fxbb"]
 [ext_resource type="Texture2D" uid="uid://cv6simtc55qel" path="res://assets/currency_nb.png" id="3_l08px"]
@@ -220,6 +220,28 @@ layout_mode = 2
 text = "
 "
 
+[node name="Health" type="HBoxContainer" parent="ColorRect/ColorRect/ShopList"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Health" type="Label" parent="ColorRect/ColorRect/ShopList/Health"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Health Boost"
+
+[node name="Health Description" type="Label" parent="ColorRect/ColorRect/ShopList/Health"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Boostes health by 10"
+
+[node name="Buy Health" type="Button" parent="ColorRect/ColorRect/ShopList/Health"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "
+"
+
 [node name="Back" type="Button" parent="ColorRect/ColorRect"]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 1
@@ -239,4 +261,5 @@ text = "Back"
 [connection signal="pressed" from="ColorRect/ColorRect/ShopList/Dash/Buy dash" to="." method="_on_buy_dash_pressed"]
 [connection signal="pressed" from="ColorRect/ColorRect/ShopList/Shield/Buy Shield" to="." method="_on_buy_shield_pressed"]
 [connection signal="pressed" from="ColorRect/ColorRect/ShopList/Revive/Buy Revive" to="." method="_on_buy_revive_pressed"]
+[connection signal="pressed" from="ColorRect/ColorRect/ShopList/Health/Buy Health" to="." method="_on_buy_health_pressed"]
 [connection signal="pressed" from="ColorRect/ColorRect/Back" to="." method="_on_back_pressed"]

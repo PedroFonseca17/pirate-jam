@@ -12,10 +12,15 @@ var healthComponent: HealthComponent
 func _ready():
 	if body != null:
 		healthComponent = body.get_node("HealthComponent")
-		progress_bar.max_value = healthComponent.MAX_HEALTH
-		if body.is_in_group("Player") and GlobalPlayerInfo.player_health:
-			progress_bar.value = GlobalPlayerInfo.player_health
+		if body.is_in_group("Player"):
+			print("is player")
+			progress_bar.max_value = GlobalPlayerInfo.player_max_health
+			if GlobalPlayerInfo.player_health:
+				progress_bar.value = GlobalPlayerInfo.player_health
+			else:
+				progress_bar.value = healthComponent.health
 		else:
+			progress_bar.max_value = healthComponent.MAX_HEALTH
 			progress_bar.value = healthComponent.health
 		healthComponent.receiveDamage.connect(on_receive_damage)
 	if x != 0 && y != 0:

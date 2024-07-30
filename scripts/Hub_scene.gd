@@ -3,6 +3,7 @@ extends Control
 @onready var animation_player = $AnimationPlayer
 @onready var shop_ui = $shopUI
 @onready var appering_text = $ApperingText
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,11 +13,6 @@ func _ready():
 	else:
 		open_eyes()
 		Dialogic.start("back_to_the_beginning")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_dialogic_signal(argument: String):
 	if (argument == "open_eyes"):
@@ -33,6 +29,7 @@ func _on_dialogic_signal(argument: String):
 
 func open_eyes():
 	animation_player.play("open_eyes")
+	audio_stream_player_2d.playing = true
 	await animation_player.animation_finished
 
 func close_eyes():
@@ -40,7 +37,6 @@ func close_eyes():
 	await animation_player.animation_finished
 	
 func reset_focus():
-	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.start("Back_from_Shop")
 
 func _on_button_pressed():

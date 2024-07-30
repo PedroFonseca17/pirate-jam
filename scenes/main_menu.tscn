@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbbifcc62u1bw"]
+[gd_scene load_steps=6 format=3 uid="uid://bbbifcc62u1bw"]
 
 [ext_resource type="Script" path="res://scripts/Main_Menu.gd" id="1_ma3ub"]
 [ext_resource type="PackedScene" uid="uid://wx63s0ujafpd" path="res://scenes/settings.tscn" id="2_jnl31"]
 [ext_resource type="Texture2D" uid="uid://b6ovv3d5ub77t" path="res://assets/Backgrouds_and_extra/Sabina_looking_into_the_sky.png" id="2_tvdmc"]
+[ext_resource type="FontFile" uid="uid://qvu7crsndhsb" path="res://assets/fonts/katana-regular.ttf" id="3_mffm7"]
+[ext_resource type="AudioStream" uid="uid://b2bmdid5x27mj" path="res://assets/audio/reflected-light-147979.mp3" id="5_u0xpx"]
 
 [node name="Main_Menu" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [253.0]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -20,6 +23,20 @@ script = ExtResource("1_ma3ub")
 [node name="Sprite2D" type="Sprite2D" parent="UILayer/Main_Menu"]
 position = Vector2(960, 540)
 texture = ExtResource("2_tvdmc")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="UILayer/Main_Menu"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+offset_left = 650.0
+offset_top = 205.0
+offset_right = 1270.0
+offset_bottom = 355.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_mffm7")
+theme_override_font_sizes/font_size = 136
+text = "individuation"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Main_Menu"]
 layout_mode = 1
@@ -29,18 +46,11 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -288.5
-offset_top = -144.0
+offset_top = -68.0
 offset_right = 288.5
-offset_bottom = 144.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="UILayer/Main_Menu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "A game that is very cool"
-horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="UILayer/Main_Menu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 32)
@@ -75,6 +85,11 @@ text = "Exit Game"
 [node name="Settings" parent="UILayer" node_paths=PackedStringArray("pre_scene") instance=ExtResource("2_jnl31")]
 visible = false
 pre_scene = NodePath("../Main_Menu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_u0xpx")
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="UILayer/Main_Menu/VBoxContainer/Start" to="UILayer/Main_Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="UILayer/Main_Menu/VBoxContainer/Option" to="UILayer/Main_Menu" method="_on_option_pressed"]
