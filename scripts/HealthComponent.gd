@@ -42,6 +42,7 @@ func handle_player_damage(attack: Attack):
 	var final_attack_damage = attack.attack_damage
 	if GlobalPlayerInfo.pill:
 		final_attack_damage = final_attack_damage * 2
+	print("final_attack_damage", final_attack_damage)
 	if GlobalPlayerInfo.shield and !GlobalPlayerInfo.used_shield:
 		print("broke shield")
 		brokePlayerShield.emit()

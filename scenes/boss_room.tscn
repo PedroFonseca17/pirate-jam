@@ -123,7 +123,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.341584, 0.341584, 0.341584, 1)
+color = Color(0.227451, 0.227451, 0.227451, 1)
 
 [node name="ExplosionAudioLeft" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_2nmgl")

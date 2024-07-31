@@ -24,7 +24,7 @@ func button_text():
 	check_if_already_bought(GlobalPlayerInfo.double_dash,dash_price,dash_button)
 	check_if_already_bought(GlobalPlayerInfo.shield,shield_price,shield_button)
 	check_if_already_bought(GlobalPlayerInfo.revive,revive_price,revive_button)
-	check_if_already_bought(GlobalPlayerInfo.more_currency,more_currency,more_currency_button)
+	check_if_already_bought(GlobalPlayerInfo.pill,more_currency,more_currency_button)
 	buy_health.text = str(health_boost_price)
 
 func check_if_already_bought(item: bool, itemValue: int, button: Button):
@@ -53,7 +53,7 @@ func _on_buy_revive_pressed():
 
 func _on_buy_more_currency_pressed():
 	if (GlobalPlayerInfo.currency >= more_currency):
-		handle_button_press(more_currency, "switch_more_currency",more_currency_button)
+		handle_button_press(more_currency, "switch_pill",more_currency_button)
 
 func handle_button_press(price: int,switchFn: String ,button: Button):
 	GlobalPlayerInfo.call(switchFn)

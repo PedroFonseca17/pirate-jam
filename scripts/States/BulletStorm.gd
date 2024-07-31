@@ -26,7 +26,7 @@ func _shooting_sequence() -> void:
 			return
 		shoot()
 		await tree.create_timer(0.2).timeout # Wait 0.2 seconds between each shot
-	await _wait_for_all_projectiles()
+	_wait_for_all_projectiles()
 
 func shoot():
 	var tree = get_tree()

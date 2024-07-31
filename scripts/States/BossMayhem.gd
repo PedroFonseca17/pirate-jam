@@ -163,7 +163,7 @@ func teleportToMiddle():
 	if collision_shape.shape is RectangleShape2D:
 		var rect_shape = collision_shape.shape as RectangleShape2D
 		var area_position = teleport_area.global_position
-		var extents = rect_shape.extents
+		var _extents = rect_shape.extents
 		
 		# The global position of the teleport area is already the center
 		boss.global_position = area_position
