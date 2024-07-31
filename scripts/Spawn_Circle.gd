@@ -5,6 +5,7 @@ extends Node
 @onready var fade = $Fade
 
 var entered_body: bool = false
+var done: bool = true
 
 func _ready():
 	pass
@@ -15,10 +16,14 @@ func _process(delta):
 
 
 func activate():
-	sprite_2d.texture = load("res://assets/Backgrouds_and_extra/circulo_de_transmutação_aceso.png")
-	boss_spawn.play()
-	await get_tree().create_timer(6).timeout
-	SceneTransition.change_scene("Boss_room",self)
+	if done:
+		done = false
+		sprite_2d.texture = load("res://assets/Backgrouds_and_extra/circulo_de_transmutação_aceso.png")
+		boss_spawn.play()
+		await get_tree().create_timer(6).timeout
+		SceneTransition.change_scene("Boss_room",self)
+	else:
+		pass
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Player"):
