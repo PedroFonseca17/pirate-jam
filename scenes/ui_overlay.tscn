@@ -24,12 +24,12 @@ script = ExtResource("1_dm7uo")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Boss Name" type="Label" parent="CanvasLayer"]
-offset_left = 57.6
+offset_left = 31.0
 offset_top = 16.4
-offset_right = 125.6
+offset_right = 119.0
 offset_bottom = 58.4
 theme_override_font_sizes/font_size = 30
-text = "Boss"
+text = "Greed"
 
 [node name="healthBar" parent="CanvasLayer" instance=ExtResource("1_2cv0e")]
 anchors_preset = -1

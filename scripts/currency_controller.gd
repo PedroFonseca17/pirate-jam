@@ -13,6 +13,8 @@ func on_death():
 		return
 	is_dead = true
 	var final_value = VALUE
+	print("GlobalPlayerInfo.pill", GlobalPlayerInfo.pill)
 	if GlobalPlayerInfo.pill:
 		final_value = final_value * 2
+	print("final value", final_value)
 	GlobalPlayerInfo.add_currency(final_value)

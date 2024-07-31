@@ -20,7 +20,7 @@ func Exit():
 	animated_sprite.disconnect("animation_finished", self._on_boss_sprite_animation_finished)
 
 
-func Physics_Update(delta: float):
+func Physics_Update(_delta: float):
 	pass;
 
 

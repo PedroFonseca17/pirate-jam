@@ -151,7 +151,7 @@ body = NodePath("../..")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(-3, -18)
-color = Color(0.201527, 0.201526, 0.201526, 1)
+color = Color(0.138034, 0.138034, 0.138034, 1)
 
 [node name="Bridge" type="Sprite2D" parent="."]
 position = Vector2(1164, -190)

@@ -18,7 +18,7 @@ signal boss_room_transition
 func _ready():
 	health_component.targetDeath.connect(on_death)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 
 func on_death():

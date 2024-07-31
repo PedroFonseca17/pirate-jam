@@ -6,7 +6,3 @@ extends State
 func _ready():
 	await get_tree().create_timer(1).timeout
 	Transitioned.emit(self, 'BulletStorm')
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

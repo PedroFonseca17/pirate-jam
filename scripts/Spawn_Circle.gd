@@ -2,14 +2,13 @@ extends Node
 
 @onready var sprite_2d = $Sprite2D
 @onready var boss_spawn = $"Boss spawn"
-@onready var fade = $Fade
 
 var entered_body: bool = false
 
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	if entered_body and Input.is_action_just_pressed("interact"):
 		activate()
 

@@ -5,7 +5,6 @@ var double_dash: bool = false
 var shield: bool = false
 var revive: bool = false
 var pill: bool = false
-var more_currency: bool = false
 var is_in_textbox_scene = false
 var player_health = null
 var used_shield = false
@@ -51,12 +50,6 @@ func switch_revive():
 		revive = false
 	else:
 		revive = true
-
-func switch_more_currency():
-	if more_currency:
-		more_currency = false
-	else:
-		more_currency = true
 
 func view_intro_screen():
 	intro_scene = false
